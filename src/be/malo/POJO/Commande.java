@@ -1,0 +1,53 @@
+package be.malo.POJO;
+
+public class Commande {
+
+	// Attributes/Variables
+	
+	private int id_cmd;
+	private String mode_paiement;
+	private String mode_livraison;
+	private double prix_total;
+	
+	// Getters and setters
+	
+	public int getId_cmd() {
+		return id_cmd;
+	}
+	public void setId_cmd(int id_cmd) {
+		this.id_cmd = id_cmd;
+	}
+	
+	public String getMode_paiement() {
+		return mode_paiement;
+	}
+	public void setMode_paiement(String mode_paiement) {
+		this.mode_paiement = mode_paiement;
+	}
+	
+	public String getMode_livraison() {
+		return mode_livraison;
+	}
+	public void setMode_livraison(String mode_livraison) {
+		this.mode_livraison = mode_livraison;
+	}
+	
+	public double getPrix_total() {
+		return prix_total;
+	}
+	public void setPrix_total(double prix_total) {
+		this.prix_total = prix_total;
+	}
+	
+	// Constructor
+	
+	public Commande () {}
+	
+	public Commande (int id_cmd, String mode_paiement, String mode_livraison, double prix_total) 
+	{
+		this.id_cmd = id_cmd;
+		this.mode_paiement = mode_paiement;
+		this.mode_livraison = mode_livraison;
+		this.prix_total = prix_total;
+	}
+}
