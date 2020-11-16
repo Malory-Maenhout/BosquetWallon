@@ -1,7 +1,33 @@
 package be.malo.POJO;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Gestionnaire extends Personne{
 
+	// Attributes/Variables
+	
+	private Set<PlanningSalle> listPlanningSalle = new HashSet<>();
+	
+	// Getters and setters
+	
+	public Set<PlanningSalle> getListPlanningSalle() 
+	{
+		return listPlanningSalle;
+	}
+	public void setListPlanningSalle(Set<PlanningSalle> listPlanningSalle) 
+	{
+		this.listPlanningSalle = listPlanningSalle;
+	}
+	public void addPlanningSalle(PlanningSalle planningSalle)
+	{
+		this.listPlanningSalle.add(planningSalle);
+	}	
+	public void removePlanningSalle(PlanningSalle planningSalle)
+	{
+		this.listPlanningSalle.remove(planningSalle);
+	}
+	
 	// Constructor
 	
 	public Gestionnaire () {}

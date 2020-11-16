@@ -6,7 +6,8 @@ public class Configuration {
 	
 	private int id_configuration;
 	private String type_configuration;
-	private String Description;
+	private String description;
+	private Spectacle id_spectacle;	
 	
 	// Getters and setters
 	
@@ -25,22 +26,28 @@ public class Configuration {
 	}
 	
 	public String getDescription() {
-		return Description;
+		return description;
 	}
 	public void setDescription(String description) {
-		Description = description;
+		this.description = description;
+	}
+	
+	public Spectacle getId_spectacle() {
+		return id_spectacle;
+	}
+	public void setId_spectacle(Spectacle id_spectacle) {
+		this.id_spectacle = id_spectacle;
 	}
 	
 	// Constructor
 	
 	public Configuration () {}
 	
-	public Configuration (int id_configuration, String type_configuration, String description) 
+	public Configuration (int id_configuration, String type_configuration, String description, Spectacle id_spectacle) 
 	{
 		this.id_configuration = id_configuration;
 		this.type_configuration = type_configuration;
-		Description = description;
-	}
-	
-	
+		this.description = description;
+		this.id_spectacle = id_spectacle;
+	}	
 }

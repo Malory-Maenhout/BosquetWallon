@@ -1,6 +1,8 @@
 package be.malo.POJO;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Representation {
 
@@ -10,6 +12,8 @@ public class Representation {
 	private Date date_debut;
 	private Date date_fin;
 	private Date heure_porte_open;
+	private Spectacle id_spectacle;
+	private Set<Place> listPlace = new HashSet<>();
 	
 	// Getters and setters
 	
@@ -41,15 +45,40 @@ public class Representation {
 		this.heure_porte_open = heure_porte_open;
 	}
 	
+	public Spectacle getId_spectacle() {
+		return id_spectacle;
+	}
+	public void setId_spectacle(Spectacle id_spectacle) {
+		this.id_spectacle = id_spectacle;
+	}
+	
+	public Set<Place> getListPlace() 
+	{
+		return listPlace;
+	}
+	public void setListPlace(Set<Place> listPlace) 
+	{
+		this.listPlace = listPlace;
+	}
+	public void addPlace(Place place)
+	{
+		this.listPlace.add(place);
+	}	
+	public void removeSpectacle(Place place)
+	{
+		this.listPlace.remove(place);
+	}
+	
 	// Constructor
 	
 	public Representation () {}
 	
-	public Representation (int id_representation, Date date_debut, Date date_fin, Date heure_porte_open) 
+	public Representation (int id_representation, Date date_debut, Date date_fin, Date heure_porte_open, Spectacle id_spectacle) 
 	{
 		this.id_representation = id_representation;
 		this.date_debut = date_debut;
 		this.date_fin = date_fin;
 		this.heure_porte_open = heure_porte_open;
+		this.id_spectacle = id_spectacle;
 	}
 }

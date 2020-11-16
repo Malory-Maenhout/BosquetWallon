@@ -1,6 +1,8 @@
 package be.malo.POJO;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Spectacle {
 
@@ -8,9 +10,11 @@ public class Spectacle {
 	
 	private int id_spectacle;
 	private String titre;
-	private ArrayList<Artistes> list_Artistes = new ArrayList();
 	private int nbrPlaceParClient;
-	
+	private PlanningSalle id_planningSalle;
+	private ArrayList<Artistes> list_Artistes = new ArrayList();
+	private Set<Representation> listRepresentation = new HashSet<>();
+		
 	// Getters and setters
 	
 	public int getId_spectacle() {
@@ -27,13 +31,6 @@ public class Spectacle {
 		this.titre = titre;
 	}
 	
-	public ArrayList<Artistes> getList_Artistes() {
-		return list_Artistes;
-	}
-	public void setList_Artistes(ArrayList<Artistes> list_Artistes) {
-		this.list_Artistes = list_Artistes;
-	}
-	
 	public int getNbrPlaceParClient() {
 		return nbrPlaceParClient;
 	}
@@ -41,15 +38,47 @@ public class Spectacle {
 		this.nbrPlaceParClient = nbrPlaceParClient;
 	}
 	
+	public PlanningSalle getId_planningSalle() {
+		return id_planningSalle;
+	}
+	public void setId_planningSalle(PlanningSalle id_planningSalle) {
+		this.id_planningSalle = id_planningSalle;
+	}
+	
+	public ArrayList<Artistes> getList_Artistes() {
+		return list_Artistes;
+	}
+	public void setList_Artistes(ArrayList<Artistes> list_Artistes) {
+		this.list_Artistes = list_Artistes;
+	}
+	
+	public Set<Representation> getListRepresentation()
+	{
+		return listRepresentation;
+	}
+	public void setListRepresentation(Set<Representation> listRepresentation) 
+	{
+		this.listRepresentation = listRepresentation;
+	}
+	public void addRepresentation(Representation representation)
+	{
+		this.listRepresentation.add(representation);
+	}	
+	public void removeRepresentation(Representation representation)
+	{
+		this.listRepresentation.remove(representation);
+	}
+	
 	// Constructor
 	
 	public Spectacle () {}
 	
-	public Spectacle (int id_spectacle, String titre, ArrayList<Artistes> list_Artistes, int nbrPlaceParClient) 
+	public Spectacle (int id_spectacle, String titre, int nbrPlaceParClient, PlanningSalle id_planningSalle, ArrayList<Artistes> list_Artistes) 
 	{
 		this.id_spectacle = id_spectacle;
 		this.titre = titre;
-		this.list_Artistes = list_Artistes;
 		this.nbrPlaceParClient = nbrPlaceParClient;
-	}	
+		this.id_planningSalle = id_planningSalle;
+		this.list_Artistes = list_Artistes;
+	}
 }

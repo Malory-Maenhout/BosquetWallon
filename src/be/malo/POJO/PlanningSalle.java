@@ -9,6 +9,8 @@ public class PlanningSalle {
 	private int id_planningsalle;
 	private Date date_debut;
 	private Date date_fin;
+	private Reservation id_reservation;
+	private Gestionnaire id_gestionnaire;
 	
 	// Getters and setters
 	
@@ -33,14 +35,30 @@ public class PlanningSalle {
 		this.date_fin = date_fin;
 	}
 	
+	public Reservation getId_reservation() {
+		return id_reservation;
+	}
+	public void setId_reservation(Reservation id_reservation) {
+		this.id_reservation = id_reservation;
+	}
+	
+	public Gestionnaire getId_gestionnaire() {
+		return id_gestionnaire;
+	}
+	public void setId_gestionnaire(Gestionnaire id_gestionnaire) {
+		this.id_gestionnaire = id_gestionnaire;
+	}
+	
 	// Constructor
 	
 	public PlanningSalle () {}
 	
-	public PlanningSalle (int id_planningsalle, Date date_debut, Date date_fin) 
+	public PlanningSalle (int id_planningsalle, Date date_debut, Date date_fin, Reservation id_reservation, Gestionnaire id_gestionnaire) 
 	{
 		this.id_planningsalle = id_planningsalle;
 		this.date_debut = date_debut;
 		this.date_fin = date_fin;
+		this.id_reservation = id_reservation;
+		this.id_gestionnaire = id_gestionnaire;
 	}
 }

@@ -1,7 +1,33 @@
 package be.malo.POJO;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Artistes extends Personne{
 
+	// Attributes/Variables
+	
+	private Set<Spectacle> listSpectacle = new HashSet<>();
+	
+	// Getters and setters
+	
+	public Set<Spectacle> getListSpectacle() 
+	{
+		return listSpectacle;
+	}
+	public void setListSpectacle(Set<Spectacle> listSpectacle) 
+	{
+		this.listSpectacle = listSpectacle;
+	}
+	public void addSpectacle(Spectacle spectacle)
+	{
+		this.listSpectacle.add(spectacle);
+	}	
+	public void removeSpectacle(Spectacle spectacle)
+	{
+		this.listSpectacle.remove(spectacle);
+	}
+	
 	// Constructor
 	
 	public Artistes () {}

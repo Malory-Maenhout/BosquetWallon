@@ -9,6 +9,7 @@ public class Reservation {
 	private double solde;
 	private double prix_total;
 	private String statut;
+	private Organisateur id_organisateur;
 	
 	// Getters and setters
 	
@@ -47,16 +48,24 @@ public class Reservation {
 		this.statut = statut;
 	}
 	
+	public Organisateur getId_organisateur() {
+		return id_organisateur;
+	}
+	public void setId_organisateur(Organisateur id_organisateur) {
+		this.id_organisateur = id_organisateur;
+	}
+	
 	// Constructor
 
 	public Reservation () {}
 	
-	public Reservation (int id_reservation, double acompte, double solde, double prix_total, String statut) 
+	public Reservation (int id_reservation, double acompte, double solde, double prix_total, String statut, Organisateur id_organisateur) 
 	{
 		this.id_reservation = id_reservation;
 		this.acompte = acompte;
 		this.solde = solde;
 		this.prix_total = prix_total;
 		this.statut = statut;
+		this.id_organisateur = id_organisateur;
 	}
 }
