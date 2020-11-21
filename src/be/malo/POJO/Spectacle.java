@@ -12,7 +12,7 @@ public class Spectacle {
 	private String titre;
 	private int nbrPlaceParClient;
 	private PlanningSalle id_planningSalle;
-	private ArrayList<Artistes> list_Artistes = new ArrayList();
+	private ArrayList<Artistes> list_Artistes = new ArrayList<Artistes>();
 	private Set<Representation> listRepresentation = new HashSet<>();
 		
 	// Getters and setters
