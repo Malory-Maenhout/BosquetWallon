@@ -1,5 +1,8 @@
 package be.malo.POJO;
 
+import be.malo.DAO.AbstractDAOFactory;
+import be.malo.DAO.DAO;
+
 public class Personne {
 
 	// Attributes/Variables
@@ -14,6 +17,9 @@ public class Personne {
 	private String type_personne;
 	private String ville;
 	private String code_postal;
+	
+	private static AbstractDAOFactory dao = AbstractDAOFactory.getFactory(AbstractDAOFactory.DAO_FACTORY);
+	private static DAO<Personne> personneDAO = dao.getPersonneDAO();
 	
 	// Getters and setters
 	
@@ -91,9 +97,8 @@ public class Personne {
 
 	public Personne () {}
 	
-	public Personne (int id_personne, String nom, String prenom, String tel, String adresse, String email, String mdp, String type_personne, String ville, String code_postal) 
+	public Personne (String nom, String prenom, String tel, String adresse, String email, String mdp, String type_personne, String ville, String code_postal) 
 	{
-		this.id_personne = id_personne;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.tel = tel;
@@ -103,5 +108,13 @@ public class Personne {
 		this.type_personne = type_personne;
 		this.ville = ville;
 		this.code_postal = code_postal;
+	}
+	
+	//methodes
+	
+	public boolean create()
+	{
+		boolean newPoeple = personneDAO.create(this);
+		return newPoeple;
 	}
 }

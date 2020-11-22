@@ -2,11 +2,12 @@ package be.malo.JFrame;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import be.malo.POJO.Personne;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
@@ -169,7 +170,34 @@ public class Register extends JFrame {
 		JButton btnRegister = new JButton("S'inscrire");
 		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				boolean x = verif();
+				if(x == true)
+				{
+					String name = tfName.getText().toString();
+					String firstName = tfFirstName.getText().toString();
+					String phoneNumber = tfPhoneNumber.getText().toString();
+					String address = tfAddress.getText().toString();
+					String email = tfEmail.getText().toString();
+					String password = tfPassword.getText().toString();
+					String typePoeple = cbTypePoeple.getSelectedItem().toString();
+					String city = tfCity.getText().toString();
+					String postalCode = tfPostalCode.getText().toString();
+					
+					Personne newPoeple = new Personne(name, firstName, phoneNumber, address, email, password, typePoeple, city, postalCode);					
+					
+					boolean inscrit = newPoeple.create();
+					if(inscrit == true)
+					{
+						JOptionPane.showMessageDialog(null, "Vous êtes inscrit !");
+						Login l = new Login();
+						l.setVisible(true);
+						dispose();
+					}
+					else
+					{
+						JOptionPane.showMessageDialog(null, "Erreur lors de l'inscription !");
+					}						
+				}
 			}
 		});
 		btnRegister.setBounds(28, 312, 89, 23);
@@ -208,5 +236,30 @@ public class Register extends JFrame {
 		tfPassword.setText(null);
 		tfCity.setText(null);
 		tfPostalCode.setText(null);
+	}
+	
+	//Methode to verify that all text fields have been completed 
+	private boolean verif()
+	{
+		if(tfName.getText().equals("") || tfFirstName.getText().equals("") ||
+			tfPhoneNumber.getText().equals("") || tfAddress.getText().equals("") ||
+			tfEmail.getText().equals("") || tfPassword.getText().equals("") ||
+			tfCity.getText().equals("") || tfPostalCode.getText().equals(""))
+		{	
+			JOptionPane.showMessageDialog(null, "Veuillez remplir tout les champs !");
+			return false;
+		}
+		else
+		{
+			if(tfPhoneNumber.getText().matches("[0-9]+") && tfPostalCode.getText().length() <= 5 && tfPostalCode.getText().matches("[0-9]+"))
+			{
+				return true;
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(null, "Veuillez remplir avec les bonnes données le champs \"Téléphone\" ou \"Code Postal\" !");
+				return false;
+			}
+		}
 	}
 }
