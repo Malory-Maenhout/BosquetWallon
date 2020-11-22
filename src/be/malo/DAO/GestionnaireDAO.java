@@ -21,7 +21,7 @@ public class GestionnaireDAO extends DAO<Gestionnaire> {
 		return false;
 	}
 	
-	public boolean find(Gestionnaire obj){
-		return false;
+	public Gestionnaire find(Gestionnaire obj){
+		return obj;
 	}
 }

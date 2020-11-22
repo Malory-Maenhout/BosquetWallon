@@ -21,7 +21,7 @@ public class PlanningSalleDAO extends DAO<PlanningSalle>{
 		return false;
 	}
 	
-	public boolean find(PlanningSalle obj){
-		return false;
+	public PlanningSalle find(PlanningSalle obj){
+		return obj;
 	}
 }

@@ -21,7 +21,7 @@ public class PlaceDAO extends DAO<Place>{
 		return false;
 	}
 	
-	public boolean find(Place obj){
-		return false;
+	public Place find(Place obj){
+		return obj;
 	}
 }

@@ -32,8 +32,8 @@ public class Artistes extends Personne{
 	
 	public Artistes () {}
 	
-	public Artistes (String nom, String prenom, String tel, String adresse, String email, String mdp, String type_personne, String ville, String code_postal)
+	public Artistes (int id, String nom, String prenom, String tel, String adresse, String email, String mdp, String type_personne, String ville, String code_postal)
 	{
-		super(nom, prenom, tel, adresse, email, mdp, type_personne, ville, code_postal);
+		super(id, nom, prenom, tel, adresse, email, mdp, type_personne, ville, code_postal);
 	}
 }

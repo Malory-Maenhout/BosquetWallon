@@ -110,11 +110,33 @@ public class Personne {
 		this.code_postal = code_postal;
 	}
 	
-	//methodes
+	public Personne (int id_personne, String nom, String prenom, String tel, String adresse, String email, String mdp, String type_personne, String ville, String code_postal) 
+	{
+		this.id_personne = id_personne;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.tel = tel;
+		this.adresse = adresse;
+		this.email = email;
+		this.mdp = mdp;
+		this.type_personne = type_personne;
+		this.ville = ville;
+		this.code_postal = code_postal;
+	}
 	
+	// Methodes
+	
+	// Methode who call dao to add a poeple
 	public boolean create()
 	{
 		boolean newPoeple = personneDAO.create(this);
 		return newPoeple;
+	}
+	
+	// Methode who call dao to find a poeple by his email and his password
+	public Personne find()
+	{
+		Personne poeple = personneDAO.find(this);
+		return poeple;
 	}
 }

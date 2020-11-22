@@ -21,7 +21,7 @@ public class ArtistesDAO extends DAO<Artistes>{
 		return false;
 	}
 	
-	public boolean find(Artistes obj){
-		return false;
+	public Artistes find(Artistes obj){
+		return obj;
 	}
 }

@@ -21,7 +21,7 @@ public class OrganisateurDAO extends DAO<Organisateur>{
 		return false;
 	}
 	
-	public boolean find(Organisateur obj){
-		return false;
+	public Organisateur find(Organisateur obj){
+		return obj;
 	}
 }

@@ -21,7 +21,7 @@ public class RepresentationDAO extends DAO<Representation>{
 		return false;
 	}
 	
-	public boolean find(Representation obj){
-		return false;
+	public Representation find(Representation obj){
+		return obj;
 	}
 }

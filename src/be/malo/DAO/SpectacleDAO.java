@@ -21,7 +21,7 @@ public class SpectacleDAO extends DAO<Spectacle>{
 		return false;
 	}
 	
-	public boolean find(Spectacle obj){
-		return false;
+	public Spectacle find(Spectacle obj){
+		return obj;
 	}
 }

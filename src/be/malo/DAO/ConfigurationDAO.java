@@ -21,7 +21,7 @@ public class ConfigurationDAO extends DAO<Configuration> {
 		return false;
 	}
 	
-	public boolean find(Configuration obj){
-		return false;
+	public Configuration find(Configuration obj){
+		return obj;
 	}
 }

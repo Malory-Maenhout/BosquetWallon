@@ -21,7 +21,7 @@ public class CommandeDAO extends DAO<Commande> {
 		return false;
 	}
 	
-	public boolean find(Commande obj){
-		return false;
+	public Commande find(Commande obj){
+		return obj;
 	}
 }

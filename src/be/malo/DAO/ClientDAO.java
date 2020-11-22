@@ -21,7 +21,7 @@ public class ClientDAO extends DAO<Client>{
 		return false;
 	}
 	
-	public boolean find(Client obj){
-		return false;
+	public Client find(Client obj){
+		return obj;
 	}
 }

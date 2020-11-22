@@ -21,7 +21,7 @@ public class ReservationDAO extends DAO<Reservation> {
 		return false;
 	}
 	
-	public boolean find(Reservation obj){
-		return false;
+	public Reservation find(Reservation obj){
+		return obj;
 	}
 }

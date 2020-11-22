@@ -32,7 +32,21 @@ public class PersonneDAO extends DAO<Personne> {
 		return false;
 	}
 	
-	public boolean find(Personne obj){
-		return false;
+	public Personne find(Personne obj){
+		Personne poeple = new Personne();
+		try {
+			ResultSet result = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Personne WHERE Email = '" + obj.getEmail() + "' AND MotDePasse = '" + obj.getMdp()+ "'");
+			if(result.first())
+				poeple = new Personne(result.getInt("ID_Personne"),result.getString("Nom"), result.getString("Prenom"), result.getString("Telephone"),
+						result.getString("Adresse"), obj.getEmail(), obj.getMdp(), result.getString("Type_Personne"), result.getString("Ville"),
+						result.getString("CodePostal"));
+			return poeple;
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+			return poeple;
+		}
 	}
 }
