@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import be.malo.POJO.Personne;
+
 import javax.swing.JLabel;
 
 public class ArtistesFrame extends JFrame {
@@ -34,7 +37,7 @@ public class ArtistesFrame extends JFrame {
 	 * Create the frame.
 	 */
 	
-	public ArtistesFrame() {
+	public ArtistesFrame(Personne login) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();

@@ -101,25 +101,25 @@ public class LoginFrame extends JFrame {
 					
 					if(login.getType_personne().equals("Gestionnaire")) 
 					{
-						GestionnaireFrame gf = new GestionnaireFrame();
+						GestionnaireFrame gf = new GestionnaireFrame(login);
 						gf.setVisible(true);
 						dispose();
 					}
 					else if(login.getType_personne().equals("Organisateur"))
 					{
-						OrganisateurFrame of = new OrganisateurFrame();
+						OrganisateurFrame of = new OrganisateurFrame(login);
 						of.setVisible(true);
 						dispose();
 					}
 					else if(login.getType_personne().equals("Artistes"))
 					{
-						ArtistesFrame af = new ArtistesFrame();
+						ArtistesFrame af = new ArtistesFrame(login);
 						af.setVisible(true);
 						dispose();
 					}
 					else if(login.getType_personne().equals("Client"))
 					{
-						ClientFrame cf = new ClientFrame();
+						ClientFrame cf = new ClientFrame(login);
 						cf.setVisible(true);
 						dispose();
 					}
