@@ -1,6 +1,8 @@
 package be.malo.DAO;
 
 import java.sql.*;
+import java.util.ArrayList;
+
 import be.malo.POJO.Commande;
 
 public class CommandeDAO extends DAO<Commande> {
@@ -22,6 +24,18 @@ public class CommandeDAO extends DAO<Commande> {
 	}
 	
 	public Commande find(Commande obj){
-		return obj;
+		return null;
+	}
+
+	public boolean find(Timestamp obj1, Timestamp obj2){
+		return false;
+	}
+
+	public ArrayList<Commande> find(int id){
+		return null;
+	}
+
+	public Commande findById(int id){
+		return null;
 	}
 }

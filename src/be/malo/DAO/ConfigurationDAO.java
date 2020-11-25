@@ -1,6 +1,8 @@
 package be.malo.DAO;
 
 import java.sql.*;
+import java.util.ArrayList;
+
 import be.malo.POJO.Configuration;
 
 public class ConfigurationDAO extends DAO<Configuration> {
@@ -22,6 +24,18 @@ public class ConfigurationDAO extends DAO<Configuration> {
 	}
 	
 	public Configuration find(Configuration obj){
-		return obj;
+		return null;
+	}
+
+	public boolean find(Timestamp obj1, Timestamp obj2){
+		return false;
+	}
+
+	public ArrayList<Configuration> find(int id){
+		return null;
+	}
+
+	public Configuration findById(int id){
+		return null;
 	}
 }

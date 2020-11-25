@@ -1,6 +1,11 @@
 package be.malo.POJO;
 
-import java.util.Date;
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+
+import be.malo.DAO.AbstractDAOFactory;
+import be.malo.DAO.DAO;
 
 public class PlanningSalle {
 	
@@ -9,8 +14,11 @@ public class PlanningSalle {
 	private int id_planningsalle;
 	private Date date_debut;
 	private Date date_fin;
-	private Reservation id_reservation;
-	private Gestionnaire id_gestionnaire;
+	private int id_reservation;
+	private int id_gestionnaire;
+	
+	private static AbstractDAOFactory dao = AbstractDAOFactory.getFactory(AbstractDAOFactory.DAO_FACTORY);
+	private static DAO<PlanningSalle> planningSalleDAO = dao.getPlanningSalleDAO();
 	
 	// Getters and setters
 	
@@ -35,17 +43,17 @@ public class PlanningSalle {
 		this.date_fin = date_fin;
 	}
 	
-	public Reservation getId_reservation() {
+	public int getId_reservation() {
 		return id_reservation;
 	}
-	public void setId_reservation(Reservation id_reservation) {
+	public void setId_reservation(int id_reservation) {
 		this.id_reservation = id_reservation;
 	}
 	
-	public Gestionnaire getId_gestionnaire() {
+	public int getId_gestionnaire() {
 		return id_gestionnaire;
 	}
-	public void setId_gestionnaire(Gestionnaire id_gestionnaire) {
+	public void setId_gestionnaire(int id_gestionnaire) {
 		this.id_gestionnaire = id_gestionnaire;
 	}
 	
@@ -53,12 +61,50 @@ public class PlanningSalle {
 	
 	public PlanningSalle () {}
 	
-	public PlanningSalle (int id_planningsalle, Date date_debut, Date date_fin, Reservation id_reservation, Gestionnaire id_gestionnaire) 
+	public PlanningSalle (Date date_debut, Date date_fin, int id_reservation, int id_gestionnaire) 
+	{
+		this.date_debut = date_debut;
+		this.date_fin = date_fin;
+		this.id_reservation = id_reservation;
+		this.id_gestionnaire = id_gestionnaire;
+	}
+	
+	public PlanningSalle (int id_planningsalle, Date date_debut, Date date_fin, int id_reservation, int id_gestionnaire) 
 	{
 		this.id_planningsalle = id_planningsalle;
 		this.date_debut = date_debut;
 		this.date_fin = date_fin;
 		this.id_reservation = id_reservation;
 		this.id_gestionnaire = id_gestionnaire;
+	}
+	
+	// Methodes
+	
+	// Methode that we will allows us to check if a planning room is not yet records
+	public boolean verify(Timestamp start, Timestamp end)
+	{
+		boolean check = planningSalleDAO.find(start, end);
+		return check;
+	}
+	
+	// Methode that we will allows us to create a PlanningSalle
+	public boolean create()
+	{
+		boolean newPlanningSalle = planningSalleDAO.create(this);
+		return newPlanningSalle;
+	}
+	
+	// Methode that we will allows us to find a planningSalle by id
+	public PlanningSalle getPS(int id)
+	{
+		PlanningSalle ps = planningSalleDAO.findById(id);
+		return ps;
+	}
+	
+	// Methode that we will allows us to get a list of planning room by id of gestionnaire
+	public ArrayList<PlanningSalle> getList(int id)
+	{
+		ArrayList<PlanningSalle> List = new ArrayList<PlanningSalle>(planningSalleDAO.find(id));
+		return List;
 	}
 }

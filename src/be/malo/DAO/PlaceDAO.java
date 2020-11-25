@@ -1,6 +1,8 @@
 package be.malo.DAO;
 
 import java.sql.*;
+import java.util.ArrayList;
+
 import be.malo.POJO.Place;
 
 public class PlaceDAO extends DAO<Place>{
@@ -22,6 +24,18 @@ public class PlaceDAO extends DAO<Place>{
 	}
 	
 	public Place find(Place obj){
-		return obj;
+		return null;
+	}
+
+	public boolean find(Timestamp obj1, Timestamp obj2){
+		return false;
+	}
+
+	public ArrayList<Place> find(int id){
+		return null;
+	}
+
+	public Place findById(int id){
+		return null;
 	}
 }

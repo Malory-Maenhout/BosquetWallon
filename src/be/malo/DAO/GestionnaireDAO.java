@@ -1,6 +1,8 @@
 package be.malo.DAO;
 
 import java.sql.*;
+import java.util.ArrayList;
+
 import be.malo.POJO.Gestionnaire;
 
 public class GestionnaireDAO extends DAO<Gestionnaire> {
@@ -22,6 +24,18 @@ public class GestionnaireDAO extends DAO<Gestionnaire> {
 	}
 	
 	public Gestionnaire find(Gestionnaire obj){
-		return obj;
+		return null;
+	}
+
+	public boolean find(Timestamp obj1, Timestamp obj2){
+		return false;
+	}
+
+	public ArrayList<Gestionnaire> find(int id){
+		return null;
+	}
+
+	public Gestionnaire findById(int id){
+		return null;
 	}
 }

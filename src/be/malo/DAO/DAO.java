@@ -1,6 +1,8 @@
 package be.malo.DAO;
 
 import java.sql.Connection;
+import java.sql.Timestamp;
+import java.util.ArrayList;
 
 public abstract class DAO<T> {
 	
@@ -17,4 +19,10 @@ public abstract class DAO<T> {
 	public abstract boolean update(T obj);
 	
 	public abstract T find(T obj);
+	
+	public abstract boolean find(Timestamp obj1, Timestamp obj2);
+	
+	public abstract ArrayList<T> find(int id);
+	
+	public abstract T findById(int id);
 }

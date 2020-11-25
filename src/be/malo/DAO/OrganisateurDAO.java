@@ -1,7 +1,10 @@
 package be.malo.DAO;
 
 import java.sql.*;
+import java.util.ArrayList;
+
 import be.malo.POJO.Organisateur;
+
 
 public class OrganisateurDAO extends DAO<Organisateur>{
 	
@@ -22,6 +25,18 @@ public class OrganisateurDAO extends DAO<Organisateur>{
 	}
 	
 	public Organisateur find(Organisateur obj){
-		return obj;
+		return null;
+	}
+
+	public boolean find(Timestamp obj1, Timestamp obj2){
+		return false;
+	}
+
+	public ArrayList<Organisateur> find(int id){
+		return null;
+	}
+
+	public Organisateur findById(int id){
+		return null;
 	}
 }

@@ -1,6 +1,8 @@
 package be.malo.DAO;
 
 import java.sql.*;
+import java.util.ArrayList;
+
 import be.malo.POJO.Artistes;
 
 public class ArtistesDAO extends DAO<Artistes>{
@@ -22,6 +24,18 @@ public class ArtistesDAO extends DAO<Artistes>{
 	}
 	
 	public Artistes find(Artistes obj){
-		return obj;
+		return null;
+	}
+
+	public boolean find(Timestamp obj1, Timestamp obj2){
+		return false;
+	}
+
+	public ArrayList<Artistes> find(int id){
+		return null;
+	}
+
+	public Artistes findById(int id){
+		return null;
 	}
 }

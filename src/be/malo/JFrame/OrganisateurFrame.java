@@ -65,7 +65,7 @@ public class OrganisateurFrame extends JFrame {
 		contentPane.add(lblOrganisateur);
 		
 		// Information label on Organisateur (name & firstname)
-		lblNameFirstName = new JLabel("Nom : " + orga.getNom() + " Prénom : " + orga.getPrenom());
+		JLabel lblNameFirstName = new JLabel("Nom : " + orga.getNom() + " Prénom : " + orga.getPrenom());
 		lblNameFirstName.setBounds(100, 128, 324, 22);
 		contentPane.add(lblNameFirstName);
 		
@@ -73,7 +73,9 @@ public class OrganisateurFrame extends JFrame {
 		JButton btnListRDV = new JButton("Liste r\u00E9servation");
 		btnListRDV.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			
+				ListReservationFrame lrf = new ListReservationFrame(orga);
+				lrf.setVisible(true);
+				dispose();
 			}
 		});
 		btnListRDV.setBounds(29, 211, 161, 22);
@@ -83,7 +85,9 @@ public class OrganisateurFrame extends JFrame {
 		JButton btnReservation = new JButton("R\u00E9server la salle");
 		btnReservation.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				ReservationFrame rf = new ReservationFrame(orga);
+				rf.setVisible(true);
+				dispose();
 			}
 		});
 		btnReservation.setBounds(242, 211, 154, 23);

@@ -1,6 +1,8 @@
 package be.malo.DAO;
 
 import java.sql.*;
+import java.util.ArrayList;
+
 import be.malo.POJO.Representation;
 
 public class RepresentationDAO extends DAO<Representation>{
@@ -22,6 +24,18 @@ public class RepresentationDAO extends DAO<Representation>{
 	}
 	
 	public Representation find(Representation obj){
-		return obj;
+		return null;
+	}
+
+	public boolean find(Timestamp obj1, Timestamp obj2){
+		return false;
+	}
+
+	public ArrayList<Representation> find(int id) {
+		return null;
+	}
+
+	public Representation findById(int id) {
+		return null;
 	}
 }

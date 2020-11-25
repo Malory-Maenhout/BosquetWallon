@@ -51,7 +51,7 @@ protected static final Connection conn = BosquetWallonConnection.getInstance();
 		return new RepresentationDAO(conn);
 	}
 
-	public DAO<Reservation> getReservationDAOO() {
+	public DAO<Reservation> getReservationDAO() {
 		return new ReservationDAO(conn);
 	}
 

@@ -1,6 +1,8 @@
 package be.malo.DAO;
 
 import java.sql.*;
+import java.util.ArrayList;
+
 import be.malo.POJO.Personne;
 
 public class PersonneDAO extends DAO<Personne> {
@@ -46,7 +48,19 @@ public class PersonneDAO extends DAO<Personne> {
 		catch (SQLException e)
 		{
 			e.printStackTrace();
-			return poeple;
+			return null;
 		}
+	}
+
+	public boolean find(Timestamp obj1, Timestamp obj2){
+		return false;
+	}
+
+	public ArrayList<Personne> find(int id) {
+		return null;
+	}
+
+	public Personne findById(int id) {
+		return null;
 	}
 }
