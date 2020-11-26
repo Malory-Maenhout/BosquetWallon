@@ -38,4 +38,12 @@ public class CategorieDAO extends DAO<Categorie> {
 	public Categorie findById(int id){
 		return null;
 	}
+
+	public ArrayList<Categorie> findAll(){
+		return null;
+	}
+
+	public Categorie findByNameAndFirstName(String nomA, String prenomA) {
+		return null;
+	}
 }

@@ -1,8 +1,5 @@
 package be.malo.POJO;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class Commande {
 
 	// Attributes/Variables
@@ -12,7 +9,6 @@ public class Commande {
 	private String mode_paiement;
 	private String mode_livraison;
 	private double prix_total;
-	private Set<Place> listPlace = new HashSet<>();
 	
 	// Getters and setters
 	
@@ -49,23 +45,6 @@ public class Commande {
 	}
 	public void setPrix_total(double prix_total) {
 		this.prix_total = prix_total;
-	}
-	
-	public Set<Place> getListPlace() 
-	{
-		return listPlace;
-	}
-	public void setListPlace(Set<Place> listPlace) 
-	{
-		this.listPlace = listPlace;
-	}
-	public void addPlace(Place place)
-	{
-		this.listPlace.add(place);
-	}	
-	public void removePlace(Place place)
-	{
-		this.listPlace.remove(place);
 	}
 	
 	// Constructor

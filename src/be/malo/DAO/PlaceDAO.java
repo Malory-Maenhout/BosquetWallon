@@ -7,7 +7,7 @@ import be.malo.POJO.Place;
 
 public class PlaceDAO extends DAO<Place>{
 
-	public PlaceDAO(Connection conn) {
+	public PlaceDAO(Connection conn){
 		super(conn);
 	}
 	
@@ -36,6 +36,14 @@ public class PlaceDAO extends DAO<Place>{
 	}
 
 	public Place findById(int id){
+		return null;
+	}
+
+	public ArrayList<Place> findAll(){
+		return null;
+	}
+
+	public Place findByNameAndFirstName(String nomA, String prenomA){
 		return null;
 	}
 }

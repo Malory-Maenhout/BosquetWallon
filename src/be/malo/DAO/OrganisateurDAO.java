@@ -8,7 +8,7 @@ import be.malo.POJO.Organisateur;
 
 public class OrganisateurDAO extends DAO<Organisateur>{
 	
-	public OrganisateurDAO(Connection conn) {
+	public OrganisateurDAO(Connection conn){
 		super(conn);
 	}
 	
@@ -37,6 +37,14 @@ public class OrganisateurDAO extends DAO<Organisateur>{
 	}
 
 	public Organisateur findById(int id){
+		return null;
+	}
+
+	public ArrayList<Organisateur> findAll(){
+		return null;
+	}
+
+	public Organisateur findByNameAndFirstName(String nomA, String prenomA){
 		return null;
 	}
 }

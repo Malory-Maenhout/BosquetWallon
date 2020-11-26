@@ -7,7 +7,7 @@ import be.malo.POJO.Configuration;
 
 public class ConfigurationDAO extends DAO<Configuration> {
 
-	public ConfigurationDAO(Connection conn) {
+	public ConfigurationDAO(Connection conn){
 		super(conn);
 	}
 	
@@ -36,6 +36,14 @@ public class ConfigurationDAO extends DAO<Configuration> {
 	}
 
 	public Configuration findById(int id){
+		return null;
+	}
+
+	public ArrayList<Configuration> findAll(){
+		return null;
+	}
+
+	public Configuration findByNameAndFirstName(String nomA, String prenomA){
 		return null;
 	}
 }

@@ -6,7 +6,7 @@ import be.malo.POJO.Reservation;
 
 public class ReservationDAO extends DAO<Reservation> {
 
-	public ReservationDAO(Connection conn) {
+	public ReservationDAO(Connection conn){
 		super(conn);
 	}
 	
@@ -51,7 +51,7 @@ public class ReservationDAO extends DAO<Reservation> {
 		return false;
 	}
 
-	public ArrayList<Reservation> find(int id) {	
+	public ArrayList<Reservation> find(int id){	
 		ArrayList<Reservation> ListReservation = new ArrayList<Reservation>();
 		try 
 		{
@@ -71,7 +71,7 @@ public class ReservationDAO extends DAO<Reservation> {
 		}
 	}
 
-	public Reservation findById(int id) {
+	public Reservation findById(int id){
 		Reservation r = new Reservation();
 		try {
 			ResultSet result = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -91,5 +91,13 @@ public class ReservationDAO extends DAO<Reservation> {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	public ArrayList<Reservation> findAll(){
+		return null;
+	}
+
+	public Reservation findByNameAndFirstName(String nomA, String prenomA){
+		return null;
 	}
 }

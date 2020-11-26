@@ -7,7 +7,7 @@ import be.malo.POJO.Gestionnaire;
 
 public class GestionnaireDAO extends DAO<Gestionnaire> {
 
-	public GestionnaireDAO(Connection conn) {
+	public GestionnaireDAO(Connection conn){
 		super(conn);
 	}
 	
@@ -36,6 +36,14 @@ public class GestionnaireDAO extends DAO<Gestionnaire> {
 	}
 
 	public Gestionnaire findById(int id){
+		return null;
+	}
+
+	public ArrayList<Gestionnaire> findAll(){
+		return null;
+	}
+
+	public Gestionnaire findByNameAndFirstName(String nomA, String prenomA){
 		return null;
 	}
 }

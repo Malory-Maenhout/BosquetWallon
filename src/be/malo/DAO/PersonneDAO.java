@@ -7,7 +7,7 @@ import be.malo.POJO.Personne;
 
 public class PersonneDAO extends DAO<Personne> {
 	
-	public PersonneDAO(Connection conn) {
+	public PersonneDAO(Connection conn){
 		super(conn);
 	}
 	
@@ -56,11 +56,19 @@ public class PersonneDAO extends DAO<Personne> {
 		return false;
 	}
 
-	public ArrayList<Personne> find(int id) {
+	public ArrayList<Personne> find(int id){
 		return null;
 	}
 
-	public Personne findById(int id) {
+	public Personne findById(int id){
+		return null;
+	}
+
+	public ArrayList<Personne> findAll(){
+		return null;
+	}
+
+	public Personne findByNameAndFirstName(String nomA, String prenomA){
 		return null;
 	}
 }

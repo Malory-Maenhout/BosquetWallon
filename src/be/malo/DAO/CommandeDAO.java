@@ -7,7 +7,7 @@ import be.malo.POJO.Commande;
 
 public class CommandeDAO extends DAO<Commande> {
 	
-	public CommandeDAO(Connection conn) {
+	public CommandeDAO(Connection conn){
 		super(conn);
 	}
 	
@@ -36,6 +36,14 @@ public class CommandeDAO extends DAO<Commande> {
 	}
 
 	public Commande findById(int id){
+		return null;
+	}
+
+	public ArrayList<Commande> findAll(){
+		return null;
+	}
+
+	public Commande findByNameAndFirstName(String nomA, String prenomA){
 		return null;
 	}
 }

@@ -78,7 +78,7 @@ public class ListReservationFrame extends JFrame {
 		btnReturn.setBounds(335, 227, 89, 23);
 		contentPane.add(btnReturn);
 		
-		// ScrollPane that containes à table data
+		// ScrollPane that containes a table of data
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(20, 70, 404, 146);
 		contentPane.add(scrollPane);

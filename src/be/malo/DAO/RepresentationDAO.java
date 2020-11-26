@@ -7,7 +7,7 @@ import be.malo.POJO.Representation;
 
 public class RepresentationDAO extends DAO<Representation>{
 	
-	public RepresentationDAO(Connection conn) {
+	public RepresentationDAO(Connection conn){
 		super(conn);
 	}
 	
@@ -31,11 +31,19 @@ public class RepresentationDAO extends DAO<Representation>{
 		return false;
 	}
 
-	public ArrayList<Representation> find(int id) {
+	public ArrayList<Representation> find(int id){
 		return null;
 	}
 
-	public Representation findById(int id) {
+	public Representation findById(int id){
+		return null;
+	}
+
+	public ArrayList<Representation> findAll(){
+		return null;
+	}
+
+	public Representation findByNameAndFirstName(String nomA, String prenomA){
 		return null;
 	}
 }

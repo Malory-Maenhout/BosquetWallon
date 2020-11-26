@@ -7,7 +7,7 @@ import be.malo.POJO.Spectacle;
 
 public class SpectacleDAO extends DAO<Spectacle>{
 
-	public SpectacleDAO(Connection conn) {
+	public SpectacleDAO(Connection conn){
 		super(conn);
 	}
 	
@@ -31,11 +31,19 @@ public class SpectacleDAO extends DAO<Spectacle>{
 		return false;
 	}
 
-	public ArrayList<Spectacle> find(int id) {
+	public ArrayList<Spectacle> find(int id){
 		return null;
 	}
 
-	public Spectacle findById(int id) {
+	public Spectacle findById(int id){
+		return null;
+	}
+
+	public ArrayList<Spectacle> findAll(){
+		return null;
+	}
+
+	public Spectacle findByNameAndFirstName(String nomA, String prenomA){
 		return null;
 	}
 }

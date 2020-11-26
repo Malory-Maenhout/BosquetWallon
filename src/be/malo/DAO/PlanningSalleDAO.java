@@ -6,7 +6,7 @@ import be.malo.POJO.PlanningSalle;
 
 public class PlanningSalleDAO extends DAO<PlanningSalle>{
 	
-	public PlanningSalleDAO(Connection conn) {
+	public PlanningSalleDAO(Connection conn){
 		super(conn);
 	}
 	
@@ -68,7 +68,7 @@ public class PlanningSalleDAO extends DAO<PlanningSalle>{
 		}
 	}
 
-	public ArrayList<PlanningSalle> find(int id) {
+	public ArrayList<PlanningSalle> find(int id){
 		ArrayList<PlanningSalle> ListPlanningSalle = new ArrayList<PlanningSalle>();
 		try 
 		{
@@ -88,7 +88,7 @@ public class PlanningSalleDAO extends DAO<PlanningSalle>{
 		}
 	}
 
-	public PlanningSalle findById(int id) {		
+	public PlanningSalle findById(int id){		
 		PlanningSalle ps = new PlanningSalle();
 		try {
 			ResultSet result = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -108,5 +108,13 @@ public class PlanningSalleDAO extends DAO<PlanningSalle>{
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	public ArrayList<PlanningSalle> findAll(){
+		return null;
+	}
+
+	public PlanningSalle findByNameAndFirstName(String nomA, String prenomA){
+		return null;
 	}
 }
