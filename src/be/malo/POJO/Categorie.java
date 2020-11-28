@@ -1,5 +1,8 @@
 package be.malo.POJO;
 
+import be.malo.DAO.AbstractDAOFactory;
+import be.malo.DAO.DAO;
+
 public class Categorie {
 
 	// Attributes/Variables
@@ -9,7 +12,10 @@ public class Categorie {
 	private double prix;
 	private int nbrPlaceDispo;
 	private int nbrPlaceMax;
-	private Configuration id_configuration;
+	private int id_configuration;
+	
+	private static AbstractDAOFactory dao = AbstractDAOFactory.getFactory(AbstractDAOFactory.DAO_FACTORY);
+	private static DAO<Categorie> categorieDAO = dao.getCategorieDAO();
 	
 	// Getters and setters
 	
@@ -48,10 +54,10 @@ public class Categorie {
 		this.nbrPlaceMax = nbrPlaceMax;
 	}
 
-	public Configuration getId_configuration() {
+	public int getId_configuration() {
 		return id_configuration;
 	}
-	public void setId_configuration(Configuration id_configuration) {
+	public void setId_configuration(int id_configuration) {
 		this.id_configuration = id_configuration;
 	}
 	
@@ -59,7 +65,7 @@ public class Categorie {
 	
 	public Categorie () {}
 	
-	public Categorie (int id_categorie, String type_categorie, double prix, int nbrPlaceDispo, int nbrPlaceMax, Configuration id_configuration) 
+	public Categorie (int id_categorie, String type_categorie, double prix, int nbrPlaceDispo, int nbrPlaceMax, int id_configuration) 
 	{
 		this.id_categorie = id_categorie;
 		this.type_categorie = type_categorie;
@@ -67,5 +73,23 @@ public class Categorie {
 		this.nbrPlaceDispo = nbrPlaceDispo;
 		this.nbrPlaceMax = nbrPlaceMax;
 		this.id_configuration = id_configuration;
+	}
+	
+	public Categorie (String type_categorie, double prix, int nbrPlaceDispo, int nbrPlaceMax, int id_configuration) 
+	{
+		this.type_categorie = type_categorie;
+		this.prix = prix;
+		this.nbrPlaceDispo = nbrPlaceDispo;
+		this.nbrPlaceMax = nbrPlaceMax;
+		this.id_configuration = id_configuration;
+	}
+	
+	// Methodes
+	
+	// Methode that we will allows us to create all categorie of configuration
+	public boolean create()
+	{
+		boolean cat = categorieDAO.create(this);
+		return cat;
 	}
 }

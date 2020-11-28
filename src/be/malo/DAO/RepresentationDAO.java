@@ -42,8 +42,4 @@ public class RepresentationDAO extends DAO<Representation>{
 	public ArrayList<Representation> findAll(){
 		return null;
 	}
-
-	public Representation findByNameAndFirstName(String nomA, String prenomA){
-		return null;
-	}
 }

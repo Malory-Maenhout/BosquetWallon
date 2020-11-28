@@ -42,8 +42,4 @@ public class ClientDAO extends DAO<Client>{
 	public ArrayList<Client> findAll(){
 		return null;
 	}
-
-	public Client findByNameAndFirstName(String nomA, String prenomA){
-		return null;
-	}
 }

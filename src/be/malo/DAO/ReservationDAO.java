@@ -36,7 +36,7 @@ public class ReservationDAO extends DAO<Reservation> {
 		try {
 			ResultSet result = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Reservation WHERE Prix_Total = '" + obj.getPrix_total() + "' AND ID_Organisateur = '" + obj.getId_organisateur() + "'");
-			if(result.first())
+			if(result.last())
 				reservation = new Reservation(result.getInt("ID_Reservation"), result.getDouble("Prix_Total"), result.getInt("ID_Organisateur"));
 			return reservation;
 		}
@@ -94,10 +94,6 @@ public class ReservationDAO extends DAO<Reservation> {
 	}
 
 	public ArrayList<Reservation> findAll(){
-		return null;
-	}
-
-	public Reservation findByNameAndFirstName(String nomA, String prenomA){
 		return null;
 	}
 }

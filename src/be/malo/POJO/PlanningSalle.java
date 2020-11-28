@@ -107,4 +107,11 @@ public class PlanningSalle {
 		ArrayList<PlanningSalle> List = new ArrayList<PlanningSalle>(planningSalleDAO.find(id));
 		return List;
 	}
+	
+	//Methode that we will allows us to get all data about planning room
+	public PlanningSalle find()
+	{
+		PlanningSalle ps = planningSalleDAO.find(this);
+		return ps;
+	}
 }

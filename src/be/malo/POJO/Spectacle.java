@@ -1,8 +1,7 @@
 package be.malo.POJO;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import be.malo.DAO.AbstractDAOFactory;
+import be.malo.DAO.DAO;
 
 public class Spectacle {
 
@@ -11,9 +10,10 @@ public class Spectacle {
 	private int id_spectacle;
 	private String titre;
 	private int nbrPlaceParClient;
-	private PlanningSalle id_planningSalle;
-	private ArrayList<Artistes> list_Artistes = new ArrayList<Artistes>();
-	private Set<Representation> listRepresentation = new HashSet<>();
+	private int id_planningSalle;
+	
+	private static AbstractDAOFactory dao = AbstractDAOFactory.getFactory(AbstractDAOFactory.DAO_FACTORY);
+	private static DAO<Spectacle> spectacleDAO = dao.getSpectacleDAO();
 		
 	// Getters and setters
 	
@@ -38,47 +38,45 @@ public class Spectacle {
 		this.nbrPlaceParClient = nbrPlaceParClient;
 	}
 	
-	public PlanningSalle getId_planningSalle() {
+	public int getId_planningSalle() {
 		return id_planningSalle;
 	}
-	public void setId_planningSalle(PlanningSalle id_planningSalle) {
+	public void setId_planningSalle(int id_planningSalle) {
 		this.id_planningSalle = id_planningSalle;
-	}
-	
-	public ArrayList<Artistes> getList_Artistes() {
-		return list_Artistes;
-	}
-	public void setList_Artistes(ArrayList<Artistes> list_Artistes) {
-		this.list_Artistes = list_Artistes;
-	}
-	
-	public Set<Representation> getListRepresentation()
-	{
-		return listRepresentation;
-	}
-	public void setListRepresentation(Set<Representation> listRepresentation) 
-	{
-		this.listRepresentation = listRepresentation;
-	}
-	public void addRepresentation(Representation representation)
-	{
-		this.listRepresentation.add(representation);
-	}	
-	public void removeRepresentation(Representation representation)
-	{
-		this.listRepresentation.remove(representation);
 	}
 	
 	// Constructor
 	
 	public Spectacle () {}
 	
-	public Spectacle (int id_spectacle, String titre, int nbrPlaceParClient, PlanningSalle id_planningSalle, ArrayList<Artistes> list_Artistes) 
+	public Spectacle (int id_spectacle, String titre, int nbrPlaceParClient, int id_planningSalle) 
 	{
 		this.id_spectacle = id_spectacle;
 		this.titre = titre;
 		this.nbrPlaceParClient = nbrPlaceParClient;
 		this.id_planningSalle = id_planningSalle;
-		this.list_Artistes = list_Artistes;
+	}
+	
+	public Spectacle (String titre, int nbrPlaceParClient, int id_planningSalle) 
+	{
+		this.titre = titre;
+		this.nbrPlaceParClient = nbrPlaceParClient;
+		this.id_planningSalle = id_planningSalle;
+	}
+	
+	// Methodes
+	
+	// Methode that we will allows us to create a spectacle
+	public boolean create() 
+	{
+		boolean newSpectacle = spectacleDAO.create(this);
+		return newSpectacle;
+	}
+	
+	// Methode that we will allows us to find a spectacle
+	public Spectacle find()
+	{
+		Spectacle s = spectacleDAO.find(this); 
+		return s;
 	}
 }

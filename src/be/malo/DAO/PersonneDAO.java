@@ -67,8 +67,4 @@ public class PersonneDAO extends DAO<Personne> {
 	public ArrayList<Personne> findAll(){
 		return null;
 	}
-
-	public Personne findByNameAndFirstName(String nomA, String prenomA){
-		return null;
-	}
 }

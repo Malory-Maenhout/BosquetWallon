@@ -12,7 +12,17 @@ public class CategorieDAO extends DAO<Categorie> {
 	}
 	
 	public boolean create(Categorie obj){		
-		return false;
+		try 
+		{
+			this.connect.createStatement().executeUpdate("INSERT INTO Categorie(Type_Categorie, Prix, nbrPlaceDispo, nbrPlaceMax, ID_Configuration)"
+					+ "Values('" + obj.getType_categorie() + "', '" + obj.getPrix() + "', '" + obj.getNbrPlaceDispo() + "', '" + obj.getNbrPlaceMax() + "', '" + obj.getId_configuration() + "')");
+			return true;
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+			return false;
+		}
 	}
 	
 	public boolean delete(Categorie obj){
@@ -40,10 +50,6 @@ public class CategorieDAO extends DAO<Categorie> {
 	}
 
 	public ArrayList<Categorie> findAll(){
-		return null;
-	}
-
-	public Categorie findByNameAndFirstName(String nomA, String prenomA) {
 		return null;
 	}
 }

@@ -7,7 +7,6 @@ import javax.swing.border.EmptyBorder;
 import be.malo.POJO.Organisateur;
 import be.malo.POJO.PlanningSalle;
 import be.malo.POJO.Reservation;
-
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
@@ -16,14 +15,8 @@ import com.toedter.calendar.JTextFieldDateEditor;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class ReservationFrame extends JFrame {
@@ -205,21 +198,19 @@ public class ReservationFrame extends JFrame {
 								if(y == true)
 								{
 									// Find reservation, create a planningSalle 
-									Reservation res = r.find();
-									PlanningSalle pl = new PlanningSalle(d1, d2, res.getId_reservation(), 5);
-									boolean z = pl.create();
+									r = r.find();
+									int Id_gestionnaire = 5;
+									PlanningSalle plan = new PlanningSalle(d1, d2, r.getId_reservation(), Id_gestionnaire);
+									boolean z = plan.create();
 									
 									if(z == true)
 									{
 										JOptionPane.showMessageDialog(null, "Reservation enregistrer");
-										//
-										//
-										//
-										//
-										// ici qu'on va mettre l'accès au spectacle
-										//
-										//
-										//
+										
+										plan = plan.find();
+										SpectacleFrame sf = new SpectacleFrame(plan);
+										sf.setVisible(true);
+										dispose();
 									}
 									else
 									{

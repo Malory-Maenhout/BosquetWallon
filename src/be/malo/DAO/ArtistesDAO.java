@@ -59,31 +59,4 @@ public class ArtistesDAO extends DAO<Artistes>{
 			return null;
 		}
 	}
-
-	public Artistes findByNameAndFirstName(String nomA, String prenomA){
-		Artistes search = new Artistes();
-		try 
-		{
-			ResultSet result = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Personne WHERE Nom like '" + nomA + "' AND Prenom like '" + prenomA + "'");
-			
-			if(result.first())
-			{
-				search = new Artistes(result.getInt("ID_Personne"),result.getString("Nom"), result.getString("Prenom"), result.getString("Telephone"),
-						result.getString("Adresse"), result.getString("Email"), result.getString("MotDePasse"), result.getString("Type_Personne"), result.getString("Ville"),
-						result.getString("CodePostal"));
-				return search;
-			}
-			else
-			{
-				return null;
-			}
-			
-		}
-		catch (SQLException e)
-		{
-			e.printStackTrace();
-			return null;
-		}
-	}
 }

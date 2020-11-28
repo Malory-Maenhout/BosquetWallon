@@ -16,6 +16,12 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.table.DefaultTableModel;
 import be.malo.POJO.Artistes;
+import be.malo.POJO.Categorie;
+import be.malo.POJO.Configuration;
+import be.malo.POJO.LigneSpectacle;
+import be.malo.POJO.PlanningSalle;
+import be.malo.POJO.Spectacle;
+
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 
@@ -32,7 +38,13 @@ public class SpectacleFrame extends JFrame {
 	private JTable tabListArtistes;
 	private JTable tabListArtistesInSpectacle;
 	private ArrayList<Artistes> ListB = new ArrayList<Artistes>();
+	private ArrayList<Artistes> ListA = new ArrayList<Artistes>();
 	private boolean verif;
+	private int nbrMaxPlace;
+	private String rdbtnChoice;
+	private String debout = "Salle avec 8000 places debout de disponible";
+	private String concert = "Salle avec 5000 places de dicponibles et différentes catégories de places comme : \n Or(500 places), Argent(1500 places) et Bronze(3000 places)";
+	private String cirque = "Salle avec 6000 places de dicponibles et différentes catégories de places comme : \n Diamant(1000 places), Or(2000 places), Argent(1500 places) et Bronze(1500 places)";
 
 	/**
 	 * Launch the application.
@@ -41,8 +53,10 @@ public class SpectacleFrame extends JFrame {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				try {
-					SpectacleFrame frame = new SpectacleFrame();
+				try 
+				{
+					// It's to begin on Login Frame and not on Register frame
+					LoginFrame frame = new LoginFrame();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -55,7 +69,7 @@ public class SpectacleFrame extends JFrame {
 	 * Create the frame.
 	 */
 	
-	public SpectacleFrame() {
+	public SpectacleFrame(PlanningSalle ps) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 857, 542);
 		contentPane = new JPanel();
@@ -103,7 +117,6 @@ public class SpectacleFrame extends JFrame {
 		JButton btnDescDebout = new JButton("Description debout");
 		btnDescDebout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String debout = "Salle avec 8000 places debout de disponible";
 				JOptionPane.showMessageDialog(null, debout);
 			}
 		});
@@ -114,7 +127,6 @@ public class SpectacleFrame extends JFrame {
 		JButton btnDescConcert = new JButton("Description concert");
 		btnDescConcert.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String concert = "Salle avec 5000 places de dicponibles et différentes catégories de places comme : \n Or(500 places), Argent(1500 places) et Bronze(3000 places)";
 				JOptionPane.showMessageDialog(null, concert);
 			}
 		});
@@ -125,7 +137,6 @@ public class SpectacleFrame extends JFrame {
 		JButton btnDescCirque = new JButton("Description cirque");
 		btnDescCirque.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String cirque = "Salle avec 6000 places de dicponibles et différentes catégories de places comme : \n Diamant(1000 places), Or(2000 places), Argent(1500 places) et Bronze(1500 places)";
 				JOptionPane.showMessageDialog(null, cirque);
 			}
 		});
@@ -281,12 +292,32 @@ public class SpectacleFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(rdbtnDebout.isSelected())
 				{
+					tfPrixDebout.setEditable(false);
+					tfPrixDiams.setEditable(false);
+					tfPrixOr.setEditable(false);
+					tfPrixArgent.setEditable(false);
+					tfPrixBronze.setEditable(false);
+					tfPrixDebout.setText("");
+					tfPrixDiams.setText("");
+					tfPrixOr.setText("");
+					tfPrixArgent.setText("");
+					tfPrixBronze.setText("");
 					lblPlaceMax.setText("Places MAX : 8000 places");
 					lblPlaceDebout.setText("8000 places");
 					tfPrixDebout.setEditable(true);
 				}
 				if(rdbtnConcert.isSelected())
 				{
+					tfPrixDebout.setEditable(false);
+					tfPrixDiams.setEditable(false);
+					tfPrixOr.setEditable(false);
+					tfPrixArgent.setEditable(false);
+					tfPrixBronze.setEditable(false);
+					tfPrixDebout.setText("");
+					tfPrixDiams.setText("");
+					tfPrixOr.setText("");
+					tfPrixArgent.setText("");
+					tfPrixBronze.setText("");
 					lblPlaceMax.setText("Places MAX : 5000 places");
 					lblPlaceOr.setText("500 places");
 					tfPrixOr.setEditable(true);
@@ -297,6 +328,16 @@ public class SpectacleFrame extends JFrame {
 				}
 				if(rdbtnCirque.isSelected())
 				{
+					tfPrixDebout.setEditable(false);
+					tfPrixDiams.setEditable(false);
+					tfPrixOr.setEditable(false);
+					tfPrixArgent.setEditable(false);
+					tfPrixBronze.setEditable(false);
+					tfPrixDebout.setText("");
+					tfPrixDiams.setText("");
+					tfPrixOr.setText("");
+					tfPrixArgent.setText("");
+					tfPrixBronze.setText("");
 					lblPlaceMax.setText("Places MAX : 6000 places");
 					lblPlaceDiams.setText("1000 places");
 					tfPrixDiams.setEditable(true);
@@ -337,7 +378,7 @@ public class SpectacleFrame extends JFrame {
 		scrollPaneA.setViewportView(tabListArtistes);
 		
 		Artistes a = new Artistes();
-		ArrayList<Artistes> ListA = new ArrayList<Artistes>(a.getAllArtistes());
+		ListA = new ArrayList<Artistes>(a.getAllArtistes());
 		
 		for(Artistes art : ListA)
 		{
@@ -350,18 +391,14 @@ public class SpectacleFrame extends JFrame {
 		JButton btnAddToSpectacle = new JButton("Ajouter au spectacle");
 		btnAddToSpectacle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int ligne =tabListArtistes.getSelectedRow();
-				String nomA = (String) tabListArtistes.getValueAt(ligne, 0);
-				String prenomA = (String) tabListArtistes.getValueAt(ligne, 1);
-				
-				Artistes search = new Artistes();
-				search = search.findByNameAndFirstname(nomA, prenomA);
+				Artistes search = ListA.get(tabListArtistes.getSelectedRow());
 				
 				for(Artistes v : ListB)
 				{
-					if(v.getId_personne() == search.getId_personne())
+					if(v.getNom().equals(search.getNom()) && v.getPrenom().equals(search.getPrenom()))
 					{
 						verif = true;
+						break;
 					}
 					else
 					{
@@ -446,10 +483,221 @@ public class SpectacleFrame extends JFrame {
 		JButton btnValider = new JButton("Valider la cr\u00E9ation");
 		btnValider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				nbrMaxPlace = (int) spinnerNbrMaxPlace.getValue();
 				
+				if(rdbtnDebout.isSelected())
+				{
+					rdbtnChoice = "Debout";
+				}
+				else if(rdbtnConcert.isSelected())
+				{
+					rdbtnChoice = "Concert";
+				}
+				else if(rdbtnCirque.isSelected())
+				{
+					rdbtnChoice = "Cirque";
+				}
+				else
+				{
+					rdbtnChoice = "";
+				}
+				
+				String w = verif();
+				if(w.equals("Ok"))
+				{
+					Spectacle s = new Spectacle(tfTitre.getText(), (int) spinnerNbrMaxPlace.getValue(), ps.getId_planningsalle());
+					boolean x = s.create();
+					if(x == true) 
+					{
+						s = s.find();
+						String v = "";
+						for(Artistes artistes : ListB)
+						{
+							LigneSpectacle ls = new LigneSpectacle(s.getId_spectacle(), artistes.getId_personne());
+							boolean y = ls.create();
+							if(y == true)
+							{
+								v = "Ok";
+							}
+							else
+							{
+								v = "";
+							}
+						}
+						
+						if(v.equals("Ok"))
+						{
+							Configuration c = new Configuration();
+							boolean z = false;
+							
+							if(rdbtnDebout.isSelected())
+							{
+								c = new Configuration(rdbtnDebout.getText(), debout, s.getId_spectacle());
+								z = c.create();
+							}
+							else if(rdbtnConcert.isSelected())
+							{
+								c = new Configuration(rdbtnConcert.getText(), concert, s.getId_spectacle());
+								z = c.create();
+							}
+							else if(rdbtnCirque.isSelected())
+							{
+								c = new Configuration(rdbtnCirque.getText(), cirque, s.getId_spectacle());
+								z = c.create();
+							}
+							else
+							{
+								JOptionPane.showMessageDialog(null, "Erreur lors de la création de la configuration !");
+							}
+							
+							if(z == true)
+							{
+								c = c.find(); //erreur find trouve rien renvoie tout à null
+								boolean fin = false;
+								
+								if(rdbtnDebout.isSelected())
+								{
+									double dbl1 = Double.parseDouble(tfPrixDebout.getText());
+									int place = 8000;
+									
+									Categorie cat1 = new Categorie(lblDebout.getText(), dbl1, place, place, c.getId_configuration());
+									
+									fin = cat1.create();
+								}
+								else if(rdbtnConcert.isSelected())
+								{
+									double dbl1 = Double.parseDouble(tfPrixOr.getText());
+									double dbl2 = Double.parseDouble(tfPrixArgent.getText());
+									double dbl3 = Double.parseDouble(tfPrixBronze.getText());
+									int place1 = 500;
+									int place2 = 1500;
+									int place3 = 3000;
+									
+									Categorie cat1, cat2, cat3 = new Categorie();
+									cat1 = new Categorie(lblOr.getText(), dbl1, place1, place1, c.getId_configuration());
+									cat2 = new Categorie(lblArgent.getText(), dbl2, place2, place2, c.getId_configuration());
+									cat3 = new Categorie(lblBronze.getText(), dbl3, place3, place3, c.getId_configuration());
+									
+									fin = cat1.create();
+									fin = cat2.create();
+									fin = cat3.create();
+								}
+								else if(rdbtnCirque.isSelected())
+								{
+									double dbl1 = Double.parseDouble(tfPrixOr.getText());
+									double dbl2 = Double.parseDouble(tfPrixArgent.getText());
+									double dbl3 = Double.parseDouble(tfPrixBronze.getText());
+									double dbl4 = Double.parseDouble(tfPrixDiams.getText());
+									int place1 = 2000;
+									int place2 = 1500;
+									int place3 = 1500;
+									int place4 = 1000;
+									
+									Categorie cat1, cat2, cat3, cat4 = new Categorie();
+									cat1 = new Categorie(lblOr.getText(), dbl1, place1, place1, c.getId_configuration());
+									cat2 = new Categorie(lblArgent.getText(), dbl2, place2, place2, c.getId_configuration());
+									cat3 = new Categorie(lblBronze.getText(), dbl3, place3, place3, c.getId_configuration());
+									cat4 = new Categorie(lblDiamant.getText(), dbl4, place4, place4, c.getId_configuration());
+									
+									fin = cat1.create();
+									fin = cat2.create();
+									fin = cat3.create();
+									fin = cat4.create();
+								}
+								
+								if(fin == true)
+								{
+									JOptionPane.showMessageDialog(null, "Votre Spectacle a été enregistrer !");
+									//
+									//
+									// passage au représentation.
+									// ne pas oublier de passer les spectacle dans la frame des représentation.
+									//
+								}
+								else
+								{
+									JOptionPane.showMessageDialog(null, "Erreur lors de l'enregistrement de la/des catégorie(s) !");
+								}
+							}
+							else
+							{
+								JOptionPane.showMessageDialog(null, "Erreur lors de l'enregistrement de la configuration !");
+							}
+						}
+						else
+						{
+							JOptionPane.showMessageDialog(null, "Erreur lors de l'enregistrement de la liste des artistes du spectacle !");
+						}
+					}
+					else
+					{
+						JOptionPane.showMessageDialog(null, "Erreur lors de l'enregistrement du spectacle !");
+					}
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null, w);
+				}			
 			}
 		});
 		btnValider.setBounds(296, 469, 207, 23);
 		contentPane.add(btnValider);
+	}
+	
+	public String verif()
+	{
+		if(tfTitre.getText().equals("") || nbrMaxPlace == 0)
+		{
+			return "Remplisser tous les champs disponible avant de valider !";
+		}
+		else
+		{		
+			if(ListB.isEmpty())
+			{
+				return "Remplisser tous les champs disponible avant de valider !";
+			}
+			else
+			{
+				if(rdbtnChoice.equals("Debout"))
+				{
+					if(tfPrixDebout.getText().equals("") || tfPrixDebout.getText().matches("^[a-zA-Z]+$"))
+					{
+						return "Remplisser tous les champs disponible avant de valider !";
+					}
+					else
+					{
+						return "Ok";
+					}
+				}
+				else if(rdbtnChoice.equals("Concert"))
+				{
+					if(tfPrixOr.getText().equals("") || tfPrixArgent.getText().equals("") || tfPrixBronze.getText().equals("") 
+							|| tfPrixOr.getText().matches("^[a-zA-Z]+$") || tfPrixArgent.getText().matches("^[a-zA-Z]+$") || tfPrixBronze.getText().matches("^[a-zA-Z]+$"))
+					{
+						return "Remplisser tous les champs disponible avant de valider !";
+					}
+					else
+					{
+						return "Ok";
+					}
+				}
+				else if(rdbtnChoice.equals("Cirque"))
+				{
+					if(tfPrixOr.getText().equals("") || tfPrixArgent.getText().equals("") || tfPrixBronze.getText().equals("") || tfPrixDiams.getText().equals("")
+							|| tfPrixOr.getText().matches("^[a-zA-Z]+$") || tfPrixArgent.getText().matches("^[a-zA-Z]+$") || tfPrixBronze.getText().matches("^[a-zA-Z]+$") || tfPrixDiams.getText().matches("^[a-zA-Z]+$"))
+					{
+						return "Remplisser tous les champs disponible avant de valider !";
+					}
+					else
+					{
+						return "Ok";
+					}
+				}
+				else
+				{
+					return "Remplisser tous les champs disponible avant de valider !";
+				}
+			}
+		}
 	}
 }

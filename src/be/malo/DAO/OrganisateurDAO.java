@@ -43,8 +43,4 @@ public class OrganisateurDAO extends DAO<Organisateur>{
 	public ArrayList<Organisateur> findAll(){
 		return null;
 	}
-
-	public Organisateur findByNameAndFirstName(String nomA, String prenomA){
-		return null;
-	}
 }

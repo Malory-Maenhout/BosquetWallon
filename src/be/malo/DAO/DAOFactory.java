@@ -58,4 +58,12 @@ protected static final Connection conn = BosquetWallonConnection.getInstance();
 	public DAO<Spectacle> getSpectacleDAO(){
 		return new SpectacleDAO(conn);
 	}
+
+	public DAO<LigneSpectacle> getLigneSpectacleDAO() {
+		return new LigneSpectacleDAO(conn);
+	}
+
+	public DAO<LigneCommande> getLigneCommandeDAO() {
+		return new LigneCommandeDAO(conn);
+	}
 }

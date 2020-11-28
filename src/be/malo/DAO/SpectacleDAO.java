@@ -2,7 +2,6 @@ package be.malo.DAO;
 
 import java.sql.*;
 import java.util.ArrayList;
-
 import be.malo.POJO.Spectacle;
 
 public class SpectacleDAO extends DAO<Spectacle>{
@@ -12,7 +11,17 @@ public class SpectacleDAO extends DAO<Spectacle>{
 	}
 	
 	public boolean create(Spectacle obj){		
-		return false;
+		try 
+		{
+			this.connect.createStatement().executeUpdate("INSERT INTO Spectacle(Titre, NbrPlaceParClient, ID_PlanningSalle)"
+					+ "Values('" + obj.getTitre() + "', '" + obj.getNbrPlaceParClient() + "', '" + obj.getId_planningSalle() + "')");
+			return true;
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+			return false;
+		}	
 	}
 	
 	public boolean delete(Spectacle obj){
@@ -24,7 +33,19 @@ public class SpectacleDAO extends DAO<Spectacle>{
 	}
 	
 	public Spectacle find(Spectacle obj){
-		return null;
+		Spectacle s = new Spectacle();
+		try {
+			ResultSet result = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Spectacle WHERE Titre = '" + obj.getTitre() + "' AND NbrPlaceParClient = '" + obj.getNbrPlaceParClient() + "' AND ID_PlanningSalle = '" + obj.getId_planningSalle() + "'");
+			if(result.first())
+				s = new Spectacle(result.getInt("ID_Spectacle"), result.getString("Titre"), result.getInt("NbrPlaceParClient"), result.getInt("ID_PlanningSalle"));
+			return s;
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	public boolean find(Timestamp obj1, Timestamp obj2){
@@ -40,10 +61,6 @@ public class SpectacleDAO extends DAO<Spectacle>{
 	}
 
 	public ArrayList<Spectacle> findAll(){
-		return null;
-	}
-
-	public Spectacle findByNameAndFirstName(String nomA, String prenomA){
 		return null;
 	}
 }

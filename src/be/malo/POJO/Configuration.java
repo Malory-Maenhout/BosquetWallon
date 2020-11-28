@@ -1,5 +1,8 @@
 package be.malo.POJO;
 
+import be.malo.DAO.AbstractDAOFactory;
+import be.malo.DAO.DAO;
+
 public class Configuration {
 
 	// Attributes/Variables
@@ -7,7 +10,10 @@ public class Configuration {
 	private int id_configuration;
 	private String type_configuration;
 	private String description;
-	private Spectacle id_spectacle;	
+	private int id_spectacle;	
+	
+	private static AbstractDAOFactory dao = AbstractDAOFactory.getFactory(AbstractDAOFactory.DAO_FACTORY);
+	private static DAO<Configuration> configurationDAO = dao.getConfigurationDAO();
 	
 	// Getters and setters
 	
@@ -32,10 +38,10 @@ public class Configuration {
 		this.description = description;
 	}
 	
-	public Spectacle getId_spectacle() {
+	public int getId_spectacle() {
 		return id_spectacle;
 	}
-	public void setId_spectacle(Spectacle id_spectacle) {
+	public void setId_spectacle(int id_spectacle) {
 		this.id_spectacle = id_spectacle;
 	}
 	
@@ -43,11 +49,34 @@ public class Configuration {
 	
 	public Configuration () {}
 	
-	public Configuration (int id_configuration, String type_configuration, String description, Spectacle id_spectacle) 
+	public Configuration (int id_configuration, String type_configuration, String description, int id_spectacle) 
 	{
 		this.id_configuration = id_configuration;
 		this.type_configuration = type_configuration;
 		this.description = description;
 		this.id_spectacle = id_spectacle;
 	}	
+	
+	public Configuration (String type_configuration, String description, int id_spectacle) 
+	{
+		this.type_configuration = type_configuration;
+		this.description = description;
+		this.id_spectacle = id_spectacle;
+	}
+	
+	// Methodes
+	
+	// Methode that we will allows us to create a configuration
+	public boolean create()
+	{
+		boolean conf = configurationDAO.create(this);
+		return conf;
+	}
+	
+	// Methodes that we will allow us to find the configuration
+	public Configuration find()
+	{
+		Configuration c = configurationDAO.find(this);
+		return c;
+	}
 }

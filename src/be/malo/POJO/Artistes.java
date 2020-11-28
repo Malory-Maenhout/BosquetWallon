@@ -29,11 +29,4 @@ public class Artistes extends Personne{
 		ArrayList<Artistes> List = artistesDAO.findAll();
 		return List;
 	}
-	
-	// Methode that we will allows us to find an artistes by name and firstname
-	public Artistes findByNameAndFirstname(String nomA, String prenomA)
-	{
-		Artistes search = artistesDAO.findByNameAndFirstName(nomA, prenomA);
-		return search;
-	}
 }

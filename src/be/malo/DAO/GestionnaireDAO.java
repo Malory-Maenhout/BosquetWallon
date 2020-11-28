@@ -42,8 +42,4 @@ public class GestionnaireDAO extends DAO<Gestionnaire> {
 	public ArrayList<Gestionnaire> findAll(){
 		return null;
 	}
-
-	public Gestionnaire findByNameAndFirstName(String nomA, String prenomA){
-		return null;
-	}
 }

@@ -37,7 +37,23 @@ public class PlanningSalleDAO extends DAO<PlanningSalle>{
 	}
 	
 	public PlanningSalle find(PlanningSalle obj){
-		return obj;
+		Date d1 = obj.getDate_debut();
+		Date d2 = obj.getDate_fin();
+		Timestamp dt1 = new Timestamp(d1.getYear(), d1.getMonth(), d1.getDate(), 12, 0, 0, 0);
+		Timestamp dt2 = new Timestamp(d2.getYear(), d2.getMonth(), d2.getDate(), 12, 0, 0, 0);
+		PlanningSalle ps = new PlanningSalle();
+		try {
+			ResultSet result = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM PlanningSalle WHERE Date_DebutR = '" + dt1 + "' AND Date_FinR = '" + dt2 + "' AND ID_Reservation = '" + obj.getId_reservation() + "' AND ID_Gestionnaire = '" + obj.getId_gestionnaire() + "'");
+			if(result.first())
+				ps = new PlanningSalle(result.getInt("ID_PlanningSalle"), result.getDate("Date_DebutR"), result.getDate("Date_FinR"), result.getInt("ID_Reservation"), result.getInt("ID_Gestionnaire"));
+			return ps;
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	public boolean find(Timestamp obj1, Timestamp obj2){
@@ -111,10 +127,6 @@ public class PlanningSalleDAO extends DAO<PlanningSalle>{
 	}
 
 	public ArrayList<PlanningSalle> findAll(){
-		return null;
-	}
-
-	public PlanningSalle findByNameAndFirstName(String nomA, String prenomA){
 		return null;
 	}
 }

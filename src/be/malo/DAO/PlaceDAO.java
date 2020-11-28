@@ -42,8 +42,4 @@ public class PlaceDAO extends DAO<Place>{
 	public ArrayList<Place> findAll(){
 		return null;
 	}
-
-	public Place findByNameAndFirstName(String nomA, String prenomA){
-		return null;
-	}
 }
