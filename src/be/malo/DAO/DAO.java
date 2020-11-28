@@ -27,4 +27,6 @@ public abstract class DAO<T> {
 	public abstract T findById(int id);
 	
 	public abstract ArrayList<T> findAll();
+	
+	public abstract T findPsByID(int id);
 }

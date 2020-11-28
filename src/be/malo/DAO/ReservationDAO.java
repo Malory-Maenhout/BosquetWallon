@@ -96,4 +96,8 @@ public class ReservationDAO extends DAO<Reservation> {
 	public ArrayList<Reservation> findAll(){
 		return null;
 	}
+
+	public Reservation findPsByID(int id) {
+		return null;
+	}
 }

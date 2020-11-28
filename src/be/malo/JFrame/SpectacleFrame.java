@@ -43,8 +43,8 @@ public class SpectacleFrame extends JFrame {
 	private int nbrMaxPlace;
 	private String rdbtnChoice;
 	private String debout = "Salle avec 8000 places debout de disponible";
-	private String concert = "Salle avec 5000 places de dicponibles et différentes catégories de places comme : \n Or(500 places), Argent(1500 places) et Bronze(3000 places)";
-	private String cirque = "Salle avec 6000 places de dicponibles et différentes catégories de places comme : \n Diamant(1000 places), Or(2000 places), Argent(1500 places) et Bronze(1500 places)";
+	private String concert = "Salle avec 5000 places assises de dicponibles et différentes catégories de places comme : \n Or(500 places), Argent(1500 places) et Bronze(3000 places)";
+	private String cirque = "Salle avec 6000 places assises de dicponibles et différentes catégories de places comme : \n Diamant(1000 places), Or(2000 places), Argent(1500 places) et Bronze(1500 places)";
 
 	/**
 	 * Launch the application.

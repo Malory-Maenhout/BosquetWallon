@@ -94,7 +94,7 @@ public class PlanningSalle {
 		return newPlanningSalle;
 	}
 	
-	// Methode that we will allows us to find a planningSalle by id
+	// Methode that we will allows us to find a planningSalle by id reservation
 	public PlanningSalle getPS(int id)
 	{
 		PlanningSalle ps = planningSalleDAO.findById(id);
@@ -108,10 +108,17 @@ public class PlanningSalle {
 		return List;
 	}
 	
-	//Methode that we will allows us to get all data about planning room
+	// Methode that we will allows us to get all data about planning room
 	public PlanningSalle find()
 	{
 		PlanningSalle ps = planningSalleDAO.find(this);
+		return ps;
+	}
+	
+	// Methode that we will allows us to find a planningSalle by id
+	public PlanningSalle getById(int id)
+	{
+		PlanningSalle ps = planningSalleDAO.findPsByID(id);
 		return ps;
 	}
 }

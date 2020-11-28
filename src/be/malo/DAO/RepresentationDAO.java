@@ -42,4 +42,8 @@ public class RepresentationDAO extends DAO<Representation>{
 	public ArrayList<Representation> findAll(){
 		return null;
 	}
+
+	public Representation findPsByID(int id) {
+		return null;
+	}
 }

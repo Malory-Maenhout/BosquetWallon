@@ -52,4 +52,8 @@ public class CategorieDAO extends DAO<Categorie> {
 	public ArrayList<Categorie> findAll(){
 		return null;
 	}
+
+	public Categorie findPsByID(int id) {
+		return null;
+	}
 }

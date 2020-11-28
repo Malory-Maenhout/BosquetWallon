@@ -42,4 +42,8 @@ public class CommandeDAO extends DAO<Commande> {
 	public ArrayList<Commande> findAll(){
 		return null;
 	}
+
+	public Commande findPsByID(int id) {
+		return null;
+	}
 }

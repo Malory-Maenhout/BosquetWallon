@@ -1,5 +1,7 @@
 package be.malo.POJO;
 
+import java.util.ArrayList;
+
 import be.malo.DAO.AbstractDAOFactory;
 import be.malo.DAO.DAO;
 
@@ -59,5 +61,12 @@ public class LigneSpectacle {
 	{
 		boolean ls = ligneSpectacleDAO.create(this);
 		return ls;
+	}
+	
+	// Methode that we will allows us to return a list by id of artiste
+	public ArrayList<LigneSpectacle> getList(int id)
+	{
+		ArrayList<LigneSpectacle> lls = ligneSpectacleDAO.find(id);
+		return lls;
 	}
 }

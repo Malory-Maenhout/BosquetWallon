@@ -42,4 +42,8 @@ public class ClientDAO extends DAO<Client>{
 	public ArrayList<Client> findAll(){
 		return null;
 	}
+
+	public Client findPsByID(int id) {
+		return null;
+	}
 }

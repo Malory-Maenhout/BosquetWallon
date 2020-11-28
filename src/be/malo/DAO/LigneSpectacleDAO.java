@@ -1,10 +1,10 @@
 package be.malo.DAO;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-
 import be.malo.POJO.LigneSpectacle;
 
 public class LigneSpectacleDAO extends DAO<LigneSpectacle>{
@@ -45,7 +45,23 @@ public class LigneSpectacleDAO extends DAO<LigneSpectacle>{
 	}
 
 	public ArrayList<LigneSpectacle> find(int id){
-		return null;
+		ArrayList<LigneSpectacle> ListSpectacle = new ArrayList<LigneSpectacle>();
+		try 
+		{
+			ResultSet result = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM LigneSpectacle WHERE  ID_Artistes = '" + id + "'");
+			while(result.next())
+			{
+				LigneSpectacle res = new LigneSpectacle(result.getInt("ID_LS"), result.getInt("ID_Spectacle"), result.getInt("ID_Artistes"));
+				ListSpectacle.add(res);
+			}
+			return ListSpectacle;
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	public LigneSpectacle findById(int id){
@@ -53,6 +69,10 @@ public class LigneSpectacleDAO extends DAO<LigneSpectacle>{
 	}
 
 	public ArrayList<LigneSpectacle> findAll(){
+		return null;
+	}
+
+	public LigneSpectacle findPsByID(int id) {
 		return null;
 	}
 }

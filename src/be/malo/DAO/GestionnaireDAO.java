@@ -42,4 +42,8 @@ public class GestionnaireDAO extends DAO<Gestionnaire> {
 	public ArrayList<Gestionnaire> findAll(){
 		return null;
 	}
+
+	public Gestionnaire findPsByID(int id) {
+		return null;
+	}
 }

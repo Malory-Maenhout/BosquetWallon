@@ -129,4 +129,26 @@ public class PlanningSalleDAO extends DAO<PlanningSalle>{
 	public ArrayList<PlanningSalle> findAll(){
 		return null;
 	}
+
+	public PlanningSalle findPsByID(int id) {
+		PlanningSalle ps = new PlanningSalle();
+		try {
+			ResultSet result = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM PlanningSalle WHERE  ID_PlanningSalle = '" + id + "'");
+			if(result.first())
+			{
+				ps = new PlanningSalle(result.getInt("ID_PlanningSalle"), result.getDate("Date_DebutR"), result.getDate("Date_FinR"), result.getInt("ID_Reservation"), result.getInt("ID_Gestionnaire"));
+				return ps;
+			}
+			else
+			{
+				return null;
+			}
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+			return null;
+		}
+	}
 }

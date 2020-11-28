@@ -43,4 +43,8 @@ public class OrganisateurDAO extends DAO<Organisateur>{
 	public ArrayList<Organisateur> findAll(){
 		return null;
 	}
+
+	public Organisateur findPsByID(int id) {
+		return null;
+	}
 }

@@ -59,4 +59,8 @@ public class ArtistesDAO extends DAO<Artistes>{
 			return null;
 		}
 	}
+
+	public Artistes findPsByID(int id) {
+		return null;
+	}
 }

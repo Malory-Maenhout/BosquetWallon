@@ -42,4 +42,8 @@ public class PlaceDAO extends DAO<Place>{
 	public ArrayList<Place> findAll(){
 		return null;
 	}
+
+	public Place findPsByID(int id) {
+		return null;
+	}
 }

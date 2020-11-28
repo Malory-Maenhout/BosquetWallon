@@ -42,4 +42,8 @@ public class LigneCommandeDAO extends DAO<LigneCommande>{
 	public ArrayList<LigneCommande> findAll(){
 		return null;
 	}
+
+	public LigneCommande findPsByID(int id) {
+		return null;
+	}
 }

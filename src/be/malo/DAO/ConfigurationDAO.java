@@ -63,4 +63,8 @@ public class ConfigurationDAO extends DAO<Configuration> {
 	public ArrayList<Configuration> findAll(){
 		return null;
 	}
+
+	public Configuration findPsByID(int id) {
+		return null;
+	}
 }

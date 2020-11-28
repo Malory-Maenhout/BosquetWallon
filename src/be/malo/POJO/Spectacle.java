@@ -79,4 +79,11 @@ public class Spectacle {
 		Spectacle s = spectacleDAO.find(this); 
 		return s;
 	}
+	
+	// Methode that we will allows us to find a spectacle by id
+	public Spectacle finById(int id)
+	{
+		Spectacle s = spectacleDAO.findById(id);
+		return s;
+	}
 }

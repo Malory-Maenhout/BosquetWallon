@@ -67,4 +67,8 @@ public class PersonneDAO extends DAO<Personne> {
 	public ArrayList<Personne> findAll(){
 		return null;
 	}
+
+	public Personne findPsByID(int id) {
+		return null;
+	}
 }

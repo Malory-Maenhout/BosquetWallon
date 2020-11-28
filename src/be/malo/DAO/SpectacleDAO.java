@@ -57,10 +57,26 @@ public class SpectacleDAO extends DAO<Spectacle>{
 	}
 
 	public Spectacle findById(int id){
-		return null;
+		Spectacle s = new Spectacle();
+		try {
+			ResultSet result = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Spectacle WHERE ID_Spectacle = '" + id + "'");
+			if(result.first())
+				s = new Spectacle(result.getInt("ID_Spectacle"), result.getString("Titre"), result.getInt("NbrPlaceParClient"), result.getInt("ID_PlanningSalle"));
+			return s;
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	public ArrayList<Spectacle> findAll(){
+		return null;
+	}
+
+	public Spectacle findPsByID(int id) {
 		return null;
 	}
 }
