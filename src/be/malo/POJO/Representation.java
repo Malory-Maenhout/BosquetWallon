@@ -1,8 +1,8 @@
 package be.malo.POJO;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import be.malo.DAO.AbstractDAOFactory;
+import be.malo.DAO.DAO;
 
 public class Representation {
 
@@ -11,9 +11,12 @@ public class Representation {
 	private int id_representation;
 	private Date date_debut;
 	private Date date_fin;
+	private int id_spectacle;
 	private Date heure_porte_open;
-	private Spectacle id_spectacle;
-	private Set<Place> listPlace = new HashSet<>();
+	
+	
+	private static AbstractDAOFactory dao = AbstractDAOFactory.getFactory(AbstractDAOFactory.DAO_FACTORY);
+	private static DAO<Representation> representationDAO = dao.getRepresentationDAO();
 	
 	// Getters and setters
 	
@@ -45,40 +48,42 @@ public class Representation {
 		this.heure_porte_open = heure_porte_open;
 	}
 	
-	public Spectacle getId_spectacle() {
+	public int getId_spectacle() {
 		return id_spectacle;
 	}
-	public void setId_spectacle(Spectacle id_spectacle) {
+	public void setId_spectacle(int id_spectacle) {
 		this.id_spectacle = id_spectacle;
-	}
-	
-	public Set<Place> getListPlace() 
-	{
-		return listPlace;
-	}
-	public void setListPlace(Set<Place> listPlace) 
-	{
-		this.listPlace = listPlace;
-	}
-	public void addPlace(Place place)
-	{
-		this.listPlace.add(place);
-	}	
-	public void removeSpectacle(Place place)
-	{
-		this.listPlace.remove(place);
 	}
 	
 	// Constructor
 	
 	public Representation () {}
 	
-	public Representation (int id_representation, Date date_debut, Date date_fin, Date heure_porte_open, Spectacle id_spectacle) 
+	public Representation (int id_representation, Date date_debut, Date date_fin, int id_spectacle, Date heure_porte_open) 
 	{
 		this.id_representation = id_representation;
 		this.date_debut = date_debut;
 		this.date_fin = date_fin;
-		this.heure_porte_open = heure_porte_open;
 		this.id_spectacle = id_spectacle;
+		this.heure_porte_open = heure_porte_open;
+
 	}
+	
+	public Representation (Date date_debut, Date date_fin, int id_spectacle, Date heure_porte_open) 
+	{
+		this.date_debut = date_debut;
+		this.date_fin = date_fin;
+		this.id_spectacle = id_spectacle;
+		this.heure_porte_open = heure_porte_open;
+
+	}
+	
+	// Methodes
+	
+	// Methodes that we will allows us to create a representation
+	public boolean create()
+	{
+		boolean r = representationDAO.create(this);
+		return r;
+	}	
 }

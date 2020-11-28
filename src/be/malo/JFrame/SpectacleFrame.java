@@ -24,6 +24,7 @@ import be.malo.POJO.Spectacle;
 
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
+import javax.swing.SpinnerNumberModel;
 
 public class SpectacleFrame extends JFrame {
 
@@ -105,6 +106,7 @@ public class SpectacleFrame extends JFrame {
 		
 		// Spinner number place max by poeple
 		JSpinner spinnerNbrMaxPlace = new JSpinner();
+		spinnerNbrMaxPlace.setModel(new SpinnerNumberModel(0, 0, 10, 1));
 		spinnerNbrMaxPlace.setBounds(277, 113, 89, 20);
 		contentPane.add(spinnerNbrMaxPlace);
 		
@@ -552,7 +554,7 @@ public class SpectacleFrame extends JFrame {
 							
 							if(z == true)
 							{
-								c = c.find(); //erreur find trouve rien renvoie tout à null
+								c = c.find();
 								boolean fin = false;
 								
 								if(rdbtnDebout.isSelected())
@@ -608,11 +610,10 @@ public class SpectacleFrame extends JFrame {
 								if(fin == true)
 								{
 									JOptionPane.showMessageDialog(null, "Votre Spectacle a été enregistrer !");
-									//
-									//
-									// passage au représentation.
-									// ne pas oublier de passer les spectacle dans la frame des représentation.
-									//
+
+									RepresentationFrame rf = new RepresentationFrame(s);
+									rf.setVisible(true);
+									dispose();
 								}
 								else
 								{

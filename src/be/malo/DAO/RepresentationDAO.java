@@ -12,7 +12,17 @@ public class RepresentationDAO extends DAO<Representation>{
 	}
 	
 	public boolean create(Representation obj){		
-		return false;
+		try 
+		{
+			this.connect.createStatement().executeUpdate("INSERT INTO Representation(Date_Debut, Date_Fin, ID_Spectacle, Heure_Porte_Open)"
+					+ "Values('" + obj.getDate_debut() + "', '" + obj.getDate_fin() + "', '" + obj.getId_spectacle() + "', '" + obj.getHeure_porte_open() + "')");
+			return true;
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+			return false;
+		}
 	}
 	
 	public boolean delete(Representation obj){
