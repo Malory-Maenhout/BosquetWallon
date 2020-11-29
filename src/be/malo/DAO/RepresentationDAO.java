@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 import be.malo.POJO.Representation;
+import be.malo.POJO.Spectacle;
 
 public class RepresentationDAO extends DAO<Representation>{
 	
@@ -42,7 +43,23 @@ public class RepresentationDAO extends DAO<Representation>{
 	}
 
 	public ArrayList<Representation> find(int id){
-		return null;
+		ArrayList<Representation> ListR = new ArrayList<Representation>();
+		try 
+		{
+			ResultSet result = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Representation WHERE ID_Spectacle = '" + id + "'");
+			while(result.next())
+			{
+				Representation r = new Representation(result.getInt("ID_Representation"), result.getDate("Date_Debut"), result.getDate("Date_Fin"), result.getInt("ID_Spectacle"), result.getDate("Heure_Porte_Open"));
+				ListR.add(r);
+			}
+			return ListR;
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	public Representation findById(int id){

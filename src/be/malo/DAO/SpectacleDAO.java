@@ -2,6 +2,8 @@ package be.malo.DAO;
 
 import java.sql.*;
 import java.util.ArrayList;
+
+import be.malo.POJO.Artistes;
 import be.malo.POJO.Spectacle;
 
 public class SpectacleDAO extends DAO<Spectacle>{
@@ -73,7 +75,23 @@ public class SpectacleDAO extends DAO<Spectacle>{
 	}
 
 	public ArrayList<Spectacle> findAll(){
-		return null;
+		ArrayList<Spectacle> ListS = new ArrayList<Spectacle>();
+		try 
+		{
+			ResultSet result = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Spectacle");
+			while(result.next())
+			{
+				Spectacle a = new Spectacle(result.getInt("ID_Spectacle"), result.getString("Titre"), result.getInt("NbrPlaceParClient"), result.getInt("ID_PlanningSalle"));
+				ListS.add(a);
+			}
+			return ListS;
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	public Spectacle findPsByID(int id) {

@@ -1,5 +1,6 @@
 package be.malo.POJO;
 
+import java.util.ArrayList;
 import java.util.Date;
 import be.malo.DAO.AbstractDAOFactory;
 import be.malo.DAO.DAO;
@@ -86,4 +87,11 @@ public class Representation {
 		boolean r = representationDAO.create(this);
 		return r;
 	}	
+	
+	// Methodes that we will allows us to find all representation by id of spectacle
+	public ArrayList<Representation> find(int id)
+	{
+		ArrayList<Representation> ListR = representationDAO.find(id);
+		return ListR;
+	}
 }

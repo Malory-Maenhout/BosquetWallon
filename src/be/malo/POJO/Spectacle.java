@@ -1,5 +1,7 @@
 package be.malo.POJO;
 
+import java.util.ArrayList;
+
 import be.malo.DAO.AbstractDAOFactory;
 import be.malo.DAO.DAO;
 
@@ -85,5 +87,12 @@ public class Spectacle {
 	{
 		Spectacle s = spectacleDAO.findById(id);
 		return s;
+	}
+	
+	// Methode that we will allows to find all spectacle to put in a list
+	public ArrayList<Spectacle> findAll()
+	{
+		ArrayList<Spectacle> listS = spectacleDAO.findAll();
+		return listS;
 	}
 }

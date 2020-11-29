@@ -101,7 +101,7 @@ public class RegisterFrame extends JFrame {
 		
 		// Address label
 		JLabel lblAddress = new JLabel("Adresse : *");
-		lblAddress.setBounds(28, 163, 59, 14);
+		lblAddress.setBounds(28, 163, 89, 14);
 		contentPane.add(lblAddress);
 		
 		// Address text field
