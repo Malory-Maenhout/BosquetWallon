@@ -2,8 +2,6 @@ package be.malo.DAO;
 
 import java.sql.*;
 import java.util.ArrayList;
-
-import be.malo.POJO.Commande;
 import be.malo.POJO.Place;
 
 public class PlaceDAO extends DAO<Place>{

@@ -2,9 +2,7 @@ package be.malo.DAO;
 
 import java.sql.*;
 import java.util.ArrayList;
-
 import be.malo.POJO.Commande;
-import be.malo.POJO.Reservation;
 
 public class CommandeDAO extends DAO<Commande> {
 	
@@ -55,7 +53,23 @@ public class CommandeDAO extends DAO<Commande> {
 	}
 
 	public ArrayList<Commande> find(int id){
-		return null;
+		ArrayList<Commande> ListCom = new ArrayList<Commande>();
+		try 
+		{
+			ResultSet result = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Commande WHERE ID_Personne = '" + id + "'");
+			while(result.next())
+			{
+				Commande com = new Commande(result.getInt("ID_Cmd"), result.getInt("ID_Personne"), result.getString("Mode_Payement"), result.getString("Mode_Livraison"), result.getDouble("Prix_Total"));
+				ListCom.add(com);
+			}
+			return ListCom;
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	public Commande findById(int id){

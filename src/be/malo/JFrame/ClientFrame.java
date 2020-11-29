@@ -74,12 +74,9 @@ public class ClientFrame extends JFrame {
 		btnListRDV.setBounds(10, 172, 414, 22);
 		btnListRDV.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//
-				//
-				//
-				//
-				//
-				//
+				ListCommandeFrame lcf = new ListCommandeFrame(cli);
+				lcf.setVisible(true);
+				dispose();
 			}
 		});
 		contentPane.add(btnListRDV);

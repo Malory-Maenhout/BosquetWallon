@@ -1,5 +1,7 @@
 package be.malo.POJO;
 
+import java.util.ArrayList;
+
 import be.malo.DAO.AbstractDAOFactory;
 import be.malo.DAO.DAO;
 
@@ -74,19 +76,26 @@ public class Commande {
 		this.prix_total = prix_total;
 	}
 	
-	//Methodes
+	// Methodes
 	
-	//Methode that we will allows us to create an order
+	// Methode that we will allows us to create an order
 	public boolean create ()
 	{
 		boolean x = commandeDAO.create(this);
 		return x;
 	}
 	
-	//Methode that we will allows us to find an order
+	// Methode that we will allows us to find an order
 	public Commande find() 
 	{
 		Commande com = commandeDAO.find(this);
 		return com;
+	}
+	
+	// Methode that we will allows us to return a list of order by id client
+	public ArrayList<Commande> getList(int id)
+	{
+		ArrayList<Commande> lc = commandeDAO.find(id);
+		return lc;
 	}
 }
