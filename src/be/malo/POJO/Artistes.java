@@ -27,6 +27,6 @@ public class Artistes extends Personne{
 	public ArrayList<Artistes> getAllArtistes()
 	{
 		ArrayList<Artistes> List = artistesDAO.findAll();
-		return List;
+		return List;       
 	}
 }
