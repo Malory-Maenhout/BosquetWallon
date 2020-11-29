@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -117,7 +118,10 @@ public class ListSpectacleFrame extends JFrame {
 		{
 			PlanningSalle ps = new PlanningSalle();
 			ps = ps.getById(s.getId_planningSalle());
-			Object[] row = new Object [] {s.getTitre(), ps.getDate_debut(),ps.getDate_fin()};
+			DateFormat shortDateFormat = DateFormat.getDateTimeInstance(
+			        DateFormat.SHORT,
+			        DateFormat.SHORT);
+			Object[] row = new Object [] {s.getTitre(), shortDateFormat.format(ps.getDate_debut()), shortDateFormat.format(ps.getDate_fin())};
 			model.addRow(row);
 		}
 		scrollPane.setViewportView(tabSpectacle);

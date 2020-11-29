@@ -92,7 +92,11 @@ public class PlanningSalleDAO extends DAO<PlanningSalle>{
 					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM PlanningSalle WHERE ID_Gestionnaire = '" + id + "'");
 			while(result.next())
 			{
-				PlanningSalle res = new PlanningSalle(result.getInt("ID_PlanningSalle"), result.getDate("Date_DebutR"), result.getDate("Date_FinR"), result.getInt("ID_Reservation"), result.getInt("ID_Gestionnaire"));
+				Timestamp dd = new Timestamp(result.getDate("Date_DebutR").getYear(), result.getDate("Date_DebutR").getMonth(), result.getDate("Date_DebutR").getDate(), 12, 0, 0, 0);
+				Timestamp df = new Timestamp(result.getDate("Date_FinR").getYear(), result.getDate("Date_FinR").getMonth(), result.getDate("Date_FinR").getDate(), 12, 0, 0, 0);
+				Date ddf = new Date(dd.getTime());
+				Date dff = new Date(df.getTime());
+				PlanningSalle res = new PlanningSalle(result.getInt("ID_PlanningSalle"), ddf, dff, result.getInt("ID_Reservation"), result.getInt("ID_Gestionnaire"));
 				ListPlanningSalle.add(res);
 			}
 			return ListPlanningSalle;
@@ -111,7 +115,11 @@ public class PlanningSalleDAO extends DAO<PlanningSalle>{
 					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM PlanningSalle WHERE  ID_Reservation = '" + id + "'");
 			if(result.first())
 			{
-				ps = new PlanningSalle(result.getInt("ID_PlanningSalle"), result.getDate("Date_DebutR"), result.getDate("Date_FinR"), result.getInt("ID_Reservation"), result.getInt("ID_Gestionnaire"));
+				Timestamp dd = new Timestamp(result.getDate("Date_DebutR").getYear(), result.getDate("Date_DebutR").getMonth(), result.getDate("Date_DebutR").getDate(), 12, 0, 0, 0);
+				Timestamp df = new Timestamp(result.getDate("Date_FinR").getYear(), result.getDate("Date_FinR").getMonth(), result.getDate("Date_FinR").getDate(), 12, 0, 0, 0);
+				Date ddf = new Date(dd.getTime());
+				Date dff = new Date(df.getTime());
+				ps = new PlanningSalle(result.getInt("ID_PlanningSalle"), ddf, dff, result.getInt("ID_Reservation"), result.getInt("ID_Gestionnaire"));
 				return ps;
 			}
 			else
@@ -137,7 +145,11 @@ public class PlanningSalleDAO extends DAO<PlanningSalle>{
 					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM PlanningSalle WHERE  ID_PlanningSalle = '" + id + "'");
 			if(result.first())
 			{
-				ps = new PlanningSalle(result.getInt("ID_PlanningSalle"), result.getDate("Date_DebutR"), result.getDate("Date_FinR"), result.getInt("ID_Reservation"), result.getInt("ID_Gestionnaire"));
+				Timestamp dd = new Timestamp(result.getDate("Date_DebutR").getYear(), result.getDate("Date_DebutR").getMonth(), result.getDate("Date_DebutR").getDate(), 12, 0, 0, 0);
+				Timestamp df = new Timestamp(result.getDate("Date_FinR").getYear(), result.getDate("Date_FinR").getMonth(), result.getDate("Date_FinR").getDate(), 12, 0, 0, 0);
+				Date ddf = new Date(dd.getTime());
+				Date dff = new Date(df.getTime());
+				ps = new PlanningSalle(result.getInt("ID_PlanningSalle"), ddf, dff, result.getInt("ID_Reservation"), result.getInt("ID_Gestionnaire"));
 				return ps;
 			}
 			else

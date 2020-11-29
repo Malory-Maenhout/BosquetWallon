@@ -5,6 +5,7 @@ import java.awt.Button;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -107,7 +108,10 @@ public class ListPlanningSalleFrame extends JFrame {
 				{			
 					Reservation r = new Reservation();
 					r = r.getRes(res.getId_reservation());
-					Object[] row = new Object [] {res.getDate_debut(),res.getDate_fin(), r.getPrix_total()};
+					DateFormat shortDateFormat = DateFormat.getDateTimeInstance(
+					        DateFormat.SHORT,
+					        DateFormat.SHORT);
+					Object[] row = new Object [] {shortDateFormat.format(res.getDate_debut()),shortDateFormat.format(res.getDate_fin()), r.getPrix_total()};
 					model.addRow(row);
 				}			
 				scrollPane.setViewportView(TabPlanningSalle);

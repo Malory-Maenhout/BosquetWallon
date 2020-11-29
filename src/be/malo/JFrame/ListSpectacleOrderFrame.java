@@ -14,6 +14,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
@@ -93,7 +94,10 @@ public class ListSpectacleOrderFrame extends JFrame {
 		{
 			PlanningSalle ps = new PlanningSalle();
 			ps = ps.getById(s1.getId_planningSalle());
-			Object[] row = new Object [] {s1.getTitre(), ps.getDate_debut(),ps.getDate_fin()};
+			DateFormat shortDateFormat = DateFormat.getDateTimeInstance(
+			        DateFormat.SHORT,
+			        DateFormat.SHORT);
+			Object[] row = new Object [] {s1.getTitre(), shortDateFormat.format(ps.getDate_debut()), shortDateFormat.format(ps.getDate_fin())};
 			model.addRow(row);
 		}		
 		scrollPane.setViewportView(tabListSpectacle);

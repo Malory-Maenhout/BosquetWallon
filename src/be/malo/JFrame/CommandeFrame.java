@@ -20,6 +20,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
@@ -63,13 +64,17 @@ public class CommandeFrame extends JFrame {
 	 */
 	
 	public CommandeFrame(Client cli, Spectacle spec, Representation rep) {
+		DateFormat shortDateFormat = DateFormat.getDateTimeInstance(
+		        DateFormat.SHORT,
+		        DateFormat.SHORT);
+		
 		conf = conf.findById(spec.getId_spectacle());
 		Categorie cat = new Categorie();
 		listCat = cat.findAll(conf.getId_configuration());
 		
 		Date db = new Date((rep.getDate_debut()).getTime());
 		Date df = new Date((rep.getDate_fin()).getTime());
-		Date dh = new Date((rep.getDate_fin()).getTime());
+		Date dh = new Date((rep.getHeure_porte_open()).getTime());
 		
 		Timestamp dbf = new Timestamp(db.getYear(), db.getMonth(), db.getDate(), db.getHours(), db.getMinutes(), 0, 0);
 		Timestamp dff = new Timestamp(df.getYear(), df.getMonth(), df.getDate(), df.getHours(), df.getMinutes(), 0, 0);
@@ -124,7 +129,7 @@ public class CommandeFrame extends JFrame {
 		contentPane.add(lblRepresentation);
 		
 		// Label info representation
-		JLabel lblInfoRepresentation = new JLabel("Commence : " + dbf + "   Termine : "+ dff);
+		JLabel lblInfoRepresentation = new JLabel("Commence : " + shortDateFormat.format(dbf) + "   Termine : "+ shortDateFormat.format(dff));
 		lblInfoRepresentation.setBounds(120, 151, 521, 20);
 		contentPane.add(lblInfoRepresentation);
 		
@@ -134,7 +139,7 @@ public class CommandeFrame extends JFrame {
 		contentPane.add(lblDoorOpen);
 		
 		// Label info hour door open
-		JLabel lblInfoDoorOpen = new JLabel( "" + dho + "");
+		JLabel lblInfoDoorOpen = new JLabel(shortDateFormat.format(dho));
 		lblInfoDoorOpen.setBounds(141, 187, 222, 17);
 		contentPane.add(lblInfoDoorOpen);
 		

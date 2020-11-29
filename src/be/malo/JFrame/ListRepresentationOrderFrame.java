@@ -3,6 +3,7 @@ package be.malo.JFrame;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -92,7 +93,10 @@ public class ListRepresentationOrderFrame extends JFrame {
 		
 		for(Representation r1 : listR)
 		{
-			Object[] row = new Object [] {r1.getDate_debut(), r1.getDate_fin(), r1.getHeure_porte_open()};
+			DateFormat shortDateFormat = DateFormat.getDateTimeInstance(
+			        DateFormat.SHORT,
+			        DateFormat.SHORT);
+			Object[] row = new Object [] {shortDateFormat.format(r1.getDate_debut()), shortDateFormat.format(r1.getDate_fin()), shortDateFormat.format(r1.getHeure_porte_open())};
 			model.addRow(row);
 		}		
 		scrollPane.setViewportView(tabListRepresentation);

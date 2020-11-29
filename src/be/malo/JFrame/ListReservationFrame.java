@@ -10,6 +10,7 @@ import be.malo.POJO.PlanningSalle;
 import be.malo.POJO.Reservation;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
@@ -103,7 +104,10 @@ public class ListReservationFrame extends JFrame {
 		{
 			PlanningSalle ps = new PlanningSalle();
 			ps = ps.getPS(res.getId_reservation());		
-			Object[] row = new Object [] {ps.getDate_debut(),ps.getDate_fin(),res.getPrix_total()};
+			DateFormat shortDateFormat = DateFormat.getDateTimeInstance(
+			        DateFormat.SHORT,
+			        DateFormat.SHORT);
+			Object[] row = new Object [] {shortDateFormat.format(ps.getDate_debut()),shortDateFormat.format(ps.getDate_fin()),res.getPrix_total()};
 			model.addRow(row);
 		}	
 		scrollPane.setViewportView(TabReservation);
