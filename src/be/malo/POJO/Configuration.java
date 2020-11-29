@@ -79,4 +79,11 @@ public class Configuration {
 		Configuration c = configurationDAO.find(this);
 		return c;
 	}
+	
+	// Methodes that we will allow us to find the configuration by id spectacle
+	public Configuration findById(int id)
+	{
+		Configuration c = configurationDAO.findById(id);
+		return c;
+	}
 }

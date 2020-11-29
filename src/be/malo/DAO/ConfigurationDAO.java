@@ -57,7 +57,19 @@ public class ConfigurationDAO extends DAO<Configuration> {
 	}
 
 	public Configuration findById(int id){
-		return null;
+		Configuration c = new Configuration();
+		try {
+			ResultSet result = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Configuration WHERE ID_Spectacle = '" + id + "'");
+			if(result.first())
+				c = new Configuration(result.getInt("ID_Configuration"), result.getString("Type_Configuration"), result.getString("Description"), result.getInt("ID_Spectacle"));
+			return c;
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	public ArrayList<Configuration> findAll(){

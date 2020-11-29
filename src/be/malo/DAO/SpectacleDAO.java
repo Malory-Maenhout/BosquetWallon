@@ -2,8 +2,6 @@ package be.malo.DAO;
 
 import java.sql.*;
 import java.util.ArrayList;
-
-import be.malo.POJO.Artistes;
 import be.malo.POJO.Spectacle;
 
 public class SpectacleDAO extends DAO<Spectacle>{

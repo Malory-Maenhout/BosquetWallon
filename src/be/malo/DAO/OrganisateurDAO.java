@@ -2,10 +2,7 @@ package be.malo.DAO;
 
 import java.sql.*;
 import java.util.ArrayList;
-
 import be.malo.POJO.Organisateur;
-import be.malo.POJO.PlanningSalle;
-
 
 public class OrganisateurDAO extends DAO<Organisateur>{
 	

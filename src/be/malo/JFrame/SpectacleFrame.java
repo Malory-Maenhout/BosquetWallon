@@ -156,27 +156,27 @@ public class SpectacleFrame extends JFrame {
 		contentPane.add(lblPlaceMax);
 		
 		// Label place stand up
-		JLabel lblDebout = new JLabel("Debout :");
+		JLabel lblDebout = new JLabel("Debout");
 		lblDebout.setBounds(20, 333, 62, 21);
 		contentPane.add(lblDebout);
 		
 		// Label place diam's
-		JLabel lblDiamant = new JLabel("Diamant :");
+		JLabel lblDiamant = new JLabel("Diamant");
 		lblDiamant.setBounds(20, 365, 62, 23);
 		contentPane.add(lblDiamant);
 		
 		// Label place gold
-		JLabel lblOr = new JLabel("Or :");
+		JLabel lblOr = new JLabel("Or");
 		lblOr.setBounds(21, 399, 46, 23);
 		contentPane.add(lblOr);
 		
 		// Label place silver
-		JLabel lblArgent = new JLabel("Argent :");
+		JLabel lblArgent = new JLabel("Argent");
 		lblArgent.setBounds(20, 433, 62, 25);
 		contentPane.add(lblArgent);
 		
 		// Label place bronze
-		JLabel lblBronze = new JLabel("Bronze :");
+		JLabel lblBronze = new JLabel("Bronze");
 		lblBronze.setBounds(20, 469, 62, 23);		
 		contentPane.add(lblBronze);
 		

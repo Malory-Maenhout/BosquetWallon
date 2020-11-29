@@ -2,7 +2,6 @@ package be.malo.DAO;
 
 import java.sql.*;
 import java.util.ArrayList;
-
 import be.malo.POJO.Categorie;
 
 public class CategorieDAO extends DAO<Categorie> {
@@ -42,7 +41,23 @@ public class CategorieDAO extends DAO<Categorie> {
 	}
 
 	public ArrayList<Categorie> find(int id){
-		return null;
+		ArrayList<Categorie> ListCat = new ArrayList<Categorie>();
+		try 
+		{
+			ResultSet result = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Categorie WHERE ID_Configuration = '" + id + "'");
+			while(result.next())
+			{
+				Categorie cat = new Categorie(result.getInt("ID_Categorie"), result.getString("Type_Categorie"), result.getDouble("Prix"), result.getInt("nbrPlaceDispo"), result.getInt("nbrPlaceMax"), result.getInt("ID_Configuration"));
+				ListCat.add(cat);
+			}
+			return ListCat;
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	public Categorie findById(int id){

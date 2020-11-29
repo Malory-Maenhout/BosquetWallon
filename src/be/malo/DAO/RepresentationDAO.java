@@ -2,9 +2,7 @@ package be.malo.DAO;
 
 import java.sql.*;
 import java.util.ArrayList;
-
 import be.malo.POJO.Representation;
-import be.malo.POJO.Spectacle;
 
 public class RepresentationDAO extends DAO<Representation>{
 	

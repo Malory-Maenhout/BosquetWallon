@@ -1,5 +1,7 @@
 package be.malo.POJO;
 
+import java.util.ArrayList;
+
 import be.malo.DAO.AbstractDAOFactory;
 import be.malo.DAO.DAO;
 
@@ -90,6 +92,13 @@ public class Categorie {
 	public boolean create()
 	{
 		boolean cat = categorieDAO.create(this);
+		return cat;
+	}
+	
+	// Methode that we will allows us to find a categorie by id configuration
+	public ArrayList<Categorie> findAll(int id)
+	{
+		ArrayList<Categorie> cat = categorieDAO.find(id);
 		return cat;
 	}
 }
