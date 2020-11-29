@@ -9,7 +9,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import be.malo.POJO.Categorie;
 import be.malo.POJO.Client;
+import be.malo.POJO.Commande;
 import be.malo.POJO.Configuration;
+import be.malo.POJO.LigneCommande;
 import be.malo.POJO.Place;
 import be.malo.POJO.Representation;
 import be.malo.POJO.Spectacle;
@@ -34,6 +36,9 @@ public class CommandeFrame extends JFrame {
 	private final ButtonGroup btnGMP = new ButtonGroup();
 	private final ButtonGroup btnGML = new ButtonGroup();
 	private ArrayList<Place> listOrder = new ArrayList<Place>();
+	private Double prix = 0.0;
+	private String mp;
+	private String ml;
 
 	/**
 	 * Launch the application.
@@ -514,7 +519,7 @@ public class CommandeFrame extends JFrame {
 		scrollPane.setViewportView(tabListOrder);
 		
 		// Label prix
-		JLabel lblPrix = new JLabel("0 \u20AC");
+		JLabel lblPrix = new JLabel(prix + " €");
 		lblPrix.setBounds(787, 564, 89, 25);
 		contentPane.add(lblPrix);
 		
@@ -588,6 +593,74 @@ public class CommandeFrame extends JFrame {
 		
 		// Button valid order
 		JButton btnValid = new JButton("Valider commande et payer");
+		btnValid.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Commande com = new Commande(cli.getId_personne(), mp, ml, prix);
+				boolean x = com.create();
+				if(x == true)
+				{
+					boolean y = false;					
+					com = com.find();				
+					for(Place pl : listOrder)
+					{
+						pl.setId_representation(rep.getId_representation());
+						y = pl.create();
+						Place newp = new Place();
+						newp = pl.find();
+						listOrder.remove(pl);
+						listOrder.add(newp);
+						
+						if(y == false)
+							break;
+					}
+					
+					if(y == true)
+					{
+						boolean z = false;
+						for(Place pla : listOrder)
+						{
+							LigneCommande lc = new LigneCommande(com.getId_cmd(), pla.getId_place());
+							z = lc.create();
+						}
+						
+						if(z == true)
+						{
+							boolean w = false;
+							for(Categorie c : listCat)
+							{
+								w = c.update();
+								if(w == false)
+									break;
+							}
+							
+							if(w == true)
+							{
+								JOptionPane.showMessageDialog(null, "Commande payer et valider !");
+								ClientFrame cf = new ClientFrame(cli);
+								cf.setVisible(true);
+								dispose();
+							}
+							else
+							{
+								JOptionPane.showMessageDialog(null, "Erreur lors de l'update des catégories !");
+							}
+						}
+						else
+						{
+							JOptionPane.showMessageDialog(null, "Erreur lors de l'enregistrement de la/des ligne(s) commande !");
+						}
+					}
+					else
+					{
+						JOptionPane.showMessageDialog(null, "Erreur lors de l'enregistrement de la/des place(s) !");
+					}
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null, "Erreur lors de l'enregistrement de la commande !");
+				}
+			}
+		});
 		btnValid.setEnabled(false);
 		btnValid.setBounds(640, 600, 236, 23);
 		contentPane.add(btnValid);
@@ -607,9 +680,22 @@ public class CommandeFrame extends JFrame {
 					{
 						if(rdbtnVisa.isSelected() || rdbtnPayPal.isSelected() || rdbtnVirement.isSelected())
 						{
+							if(rdbtnVisa.isSelected())
+								mp = "Visa";
+							else if(rdbtnPayPal.isSelected())
+								mp = "PayPal";
+							else if(rdbtnVirement.isSelected())
+								mp = "Virement SEPA";
+							
 							if(rdbtnOnPlace.isSelected() || rdbtnTimbre.isSelected() || rdbtnSecure.isSelected())
-							{
-								Double prix = 0.0;
+							{		
+								if(rdbtnOnPlace.isSelected())
+									ml = "Retrais sur place le jour même";
+								else if(rdbtnTimbre.isSelected())
+									ml = "envoi avec timbres prior";
+								else if(rdbtnSecure.isSelected())
+									ml = "envoi sécurisé";
+								
 								if(rdbtnSecure.isSelected())
 								{
 									prix += 10;

@@ -101,4 +101,11 @@ public class Categorie {
 		ArrayList<Categorie> cat = categorieDAO.find(id);
 		return cat;
 	}
+	
+	// Methode that we will allows us to update a categorie
+	public boolean update()
+	{
+		boolean cat = categorieDAO.update(this);
+		return cat;
+	}
 }

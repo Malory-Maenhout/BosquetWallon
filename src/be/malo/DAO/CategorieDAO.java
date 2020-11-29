@@ -29,7 +29,16 @@ public class CategorieDAO extends DAO<Categorie> {
 	}
 	
 	public boolean update(Categorie obj){
-		return false;
+		try 
+		{
+			this.connect.createStatement().executeUpdate("UPDATE Categorie SET nbrPlaceDispo = '" + obj.getNbrPlaceDispo() + "' Where ID_Categorie = '" + obj.getId_categorie() + "'");
+			return true;
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+			return false;
+		}
 	}
 	
 	public Categorie find(Categorie obj){
